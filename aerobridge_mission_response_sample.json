@@ -1,0 +1,4120 @@
+{
+  "response_id": "RES-2026-03-30-001",
+  "request_id": "REQ-2026-03-30-001",
+  "timestamp": "2026-03-30T06:02:35+09:00",
+  "processing_time_ms": 45200,
+  "agent_model": "gemini-2.5-pro",
+  "total_tokens": 28450,
+  "global_summary": {
+    "operational_status": "GO",
+    "total_coa_generated": 5,
+    "coa_passed_quality_gate": 4,
+    "top_3": [
+      "COA-PAPUA-001",
+      "COA-PAPUA-002",
+      "COA-PAPUA-003"
+    ],
+    "primary_reason": "3 COA memenuhi Quality Gate ≥80. COA-001 skor tertinggi (92).",
+    "intel_gate": "Area operasi aman (LOW threat). Risiko utama: cuaca pegunungan dan CFIT.",
+    "totals": {
+      "payload_kg": 43000,
+      "troops": 50,
+      "fuel_burn_kg": 24500,
+      "distance_nm": 398,
+      "mission_time_min": 1320
+    },
+    "fleet_allocation": [
+      {
+        "strategy": "Primary Lifter",
+        "aircraft": "C-130 Hercules",
+        "assignment": "Wamena — 2 sorties"
+      },
+      {
+        "strategy": "Mountain Access",
+        "aircraft": "EC725 Caracal",
+        "assignment": "Ilaga + Oksibil — 8 sorties"
+      },
+      {
+        "strategy": "Cadangan STOL",
+        "aircraft": "Cessna 208B",
+        "assignment": "Standby"
+      }
+    ]
+  },
+  "coa_list": [
+    {
+      "mission_identity": {
+        "operation_name": "OP LOGISTIK PAPUA — HEAVY LIFT",
+        "coa_id": "COA-PAPUA-001",
+        "rank": 1,
+        "status": "OPTIMIZED",
+        "label": "Tercepat",
+        "description": "Hub-and-Spoke: C-130 Wamena + EC725 Ilaga/Oksibil. 2 hari.",
+        "coa_category": "AIR_ONLY_DIRECT"
+      },
+      "operational_details": {
+        "commander": "Komandan Satgas Udara (Ops Pangan Papua)",
+        "comms": {
+          "primary": "UHF/VHF Ch-1 Satgas",
+          "alternate": "SATCOM",
+          "contingency": "HF Radio",
+          "emergency": "121.5 MHz"
+        },
+        "roe": "Non-Combatant / Logistics Support"
+      },
+      "objectives": {
+        "primary": "Distribusi 38T cargo + 50 troops ke 3 LZ dalam 2 hari operasi",
+        "secondary": [
+          "Meminimalkan hari operasi"
+        ],
+        "constraints": [
+          "MTOW dataran tinggi",
+          "Jendela cuaca 06.00-11.00 WIT"
+        ]
+      },
+      "scoring": {
+        "aggregate": 92,
+        "confidence": "HIGH",
+        "quality_gate": true,
+        "breakdown": {
+          "delivery_efficiency": 28.5,
+          "safety": 22.0,
+          "temporal": 19.0,
+          "fuel_efficiency": 12.5,
+          "environmental": 10.0
+        }
+      },
+      "risk": {
+        "threat_level": "MEDIUM",
+        "primary_strategy": "Maksimalkan payload di jendela pagi 06.00-11.00 WIT",
+        "contingency": "Ilaga tertutup kabut → staging Timika",
+        "triggers": [
+          {
+            "if": "Visibility Ilaga < 3km",
+            "then": "Reroute EC725 ke Timika",
+            "evidence": [
+              "Historis kabut >11.00 WIT"
+            ]
+          }
+        ]
+      },
+      "strategic_summary": [
+        "Misi GO. Runway Wamena 2.175m mampu C-130, payload 11.5T/sortie. Elevasi 5.085 ft, DA ~6.200 ft (OAT 18°C). Jendela pagi Vis >5km.",
+        "Risiko SIGINT LOW. Terrain masking via pegunungan tengah + sinkronisasi jadwal komersial (shadowing). HUMINT konfirmasi akses darat terputus — misi udara satu-satunya opsi.",
+        "A-1301 (C-130) serviceability 95%, PIC Kapt. Arif 18 thn Papua exp. HA-5201 (EC725) serviceability 98%, PIC Mayor Deni 21 thn exp + NVG. OGE margin Ilaga: 9.500-7.923 = 1.577 ft."
+      ],
+      "analysis": {
+        "strengths": [
+          "Selesai 2 hari — tercepat dari semua COA",
+          "C-130 angkut 30 troops + 10T cargo per sortie",
+          "EC725 akses runway pendek + 3 troops/sortie"
+        ],
+        "weaknesses": [
+          "C-130 butuh runway besar — hanya Wamena",
+          "2 unit Hercules — single point of failure",
+          "EC725 refueling Timika setiap 2 sortie"
+        ],
+        "terrain": [
+          "WAJW: 2.175m aspal, 5.085 ft — C-130 OK",
+          "WAYL: 920m gravel, 7.923 ft — Rotary Wing only",
+          "WABP: 1.200m gravel, 4.315 ft — RW / STOL"
+        ],
+        "environment": {
+          "per_dest": [
+            {
+              "icao": "WAJW",
+              "vis_km": 8,
+              "wind_kt": 5,
+              "ceiling_ft": 15000,
+              "rmk": "CAVOK pagi"
+            },
+            {
+              "icao": "WAYL",
+              "vis_km": 5,
+              "wind_kt": 8,
+              "ceiling_ft": 8000,
+              "rmk": "Kabut 11.00 WIT"
+            },
+            {
+              "icao": "WABP",
+              "vis_km": 7,
+              "wind_kt": 6,
+              "ceiling_ft": 12000,
+              "rmk": "Clear"
+            }
+          ]
+        },
+        "aoi": {
+          "center": [
+            -4.097,
+            138.952
+          ],
+          "radius_km": 250,
+          "bbox": [
+            136.5,
+            -5.5,
+            141.0,
+            -2.5
+          ]
+        },
+        "key_features": [
+          {
+            "name": "Bandara Wamena",
+            "type": "airport",
+            "coords": [
+              138.952,
+              -4.076
+            ],
+            "note": "Hub C-130"
+          },
+          {
+            "name": "LZ Ilaga",
+            "type": "airstrip",
+            "coords": [
+              137.62,
+              -3.977
+            ],
+            "note": "High-alt gravel — RW only"
+          },
+          {
+            "name": "Lanud Timika",
+            "type": "military_base",
+            "coords": [
+              136.887,
+              -4.528
+            ],
+            "note": "Staging + refuel EC725"
+          },
+          {
+            "name": "Puncak Jaya Range",
+            "type": "terrain",
+            "coords": [
+              137.16,
+              -4.08
+            ],
+            "note": "4.884m — terrain masking"
+          }
+        ],
+        "threat": {
+          "level": "LOW-MEDIUM",
+          "score": 30,
+          "factors": [
+            {
+              "name": "weather_fog",
+              "w": 0.6,
+              "desc": "Kabut lembah siang"
+            },
+            {
+              "name": "terrain_cfit",
+              "w": 0.4,
+              "desc": "CFIT approach valley"
+            }
+          ]
+        },
+        "recommended_approach": "Heavy Lift Hub-and-Spoke"
+      },
+      "technical": {
+        "status": "VALID",
+        "mass_balance": [
+          {
+            "leg": "WAJJ→WAJW",
+            "ac": "C-130",
+            "oew": 36400,
+            "crew": 405,
+            "fuel": 20000,
+            "cargo": 10000,
+            "troops": 1500,
+            "gw": 68305,
+            "mtow": 70300,
+            "margin_pct": 2.8,
+            "status": "VALID"
+          },
+          {
+            "leg": "WABT→WAYL",
+            "ac": "EC725",
+            "oew": 5300,
+            "crew": 320,
+            "fuel": 2400,
+            "cargo": 2000,
+            "troops": 300,
+            "gw": 10320,
+            "mtow": 11000,
+            "margin_pct": 6.2,
+            "status": "VALID"
+          }
+        ],
+        "performance": [
+          {
+            "check": "takeoff_vs_runway",
+            "ac": "C-130",
+            "dest": "WAJW",
+            "req": 1500,
+            "avail": 2175,
+            "margin_pct": 31,
+            "s": "VALID"
+          },
+          {
+            "check": "oge_ceiling",
+            "ac": "EC725",
+            "dest": "WAYL",
+            "req_ft": 7923,
+            "avail_ft": 9500,
+            "margin_ft": 1577,
+            "s": "VALID"
+          },
+          {
+            "check": "svc_ceiling",
+            "ac": "EC725",
+            "dest": "WAYL",
+            "req_ft": 10000,
+            "avail_ft": 20000,
+            "margin_ft": 10000,
+            "s": "VALID"
+          }
+        ],
+        "fuel": {
+          "trip_kg": 12000,
+          "reserve_kg": 3200,
+          "reserve_min": 45,
+          "compliance": "VALID",
+          "per_phase": [
+            {
+              "phase": "climb",
+              "kg": 2800
+            },
+            {
+              "phase": "cruise",
+              "kg": 7200
+            },
+            {
+              "phase": "descent",
+              "kg": 1200
+            },
+            {
+              "phase": "reserve",
+              "kg": 3200
+            }
+          ]
+        },
+        "hard_gates": {
+          "total": 8,
+          "pass": 8,
+          "fail": 0,
+          "checks": [
+            "MTOW",
+            "Runway Length",
+            "Service Ceiling",
+            "OGE Ceiling",
+            "Crosswind",
+            "Density Alt",
+            "Fuel Endurance",
+            "Climb Gradient"
+          ]
+        },
+        "feasibility_verdict": {
+          "status": "FEASIBLE",
+          "hard_gate_pass": true,
+          "notes": "Semua 8 hard gate checks lulus. Misi layak secara teknis."
+        }
+      },
+      "tasking": {
+        "assets": [
+          {
+            "unit_id": "FW-C130-01",
+            "ac": "C-130 Hercules",
+            "reg": "A-1301",
+            "base": "WAJJ",
+            "co_located": true,
+            "ferry": false,
+            "task": "Wamena — 20T cargo + 30 troops (2 sorties)",
+            "per_sortie": {
+              "cargo_kg": 10000,
+              "troops": 15,
+              "total_kg": 11500
+            }
+          },
+          {
+            "unit_id": "RW-CAR-05",
+            "ac": "EC725 Caracal",
+            "reg": "HA-5201",
+            "base": "WABT",
+            "co_located": true,
+            "ferry": false,
+            "task": "Ilaga + Oksibil — 18T cargo + 20 troops (8 sorties)",
+            "per_sortie": {
+              "cargo_kg": 2000,
+              "troops": 3,
+              "total_kg": 2300
+            }
+          }
+        ],
+        "health": [
+          {
+            "unit": "FW-C130-01",
+            "status": "MISSION_READY",
+            "hours": 12450,
+            "next_mx": "2026-04-15",
+            "svc_score": 95
+          },
+          {
+            "unit": "RW-CAR-05",
+            "status": "MISSION_READY",
+            "hours": 3200,
+            "next_mx": "2026-04-10",
+            "svc_score": 98
+          }
+        ],
+        "crew": [
+          {
+            "cs": "HERC-PIC",
+            "role": "pilot",
+            "name": "Kapt. Arif Setiawan",
+            "unit": "FW-C130-01",
+            "exp_yr": 18,
+            "certs": [
+              "C-130 TR",
+              "Mountain Ops"
+            ],
+            "weight_kg": 85,
+            "as": "OEW"
+          },
+          {
+            "cs": "HERC-CP",
+            "role": "co_pilot",
+            "name": "Lettu. Budi Prasetyo",
+            "unit": "FW-C130-01",
+            "exp_yr": 7,
+            "certs": [
+              "C-130 TR"
+            ],
+            "weight_kg": 80,
+            "as": "OEW"
+          },
+          {
+            "cs": "HERC-NAV",
+            "role": "navigator",
+            "name": "Lettu. Fajar Nugroho",
+            "unit": "FW-C130-01",
+            "exp_yr": 9,
+            "certs": [
+              "C-130 Nav"
+            ],
+            "weight_kg": 78,
+            "as": "OEW"
+          },
+          {
+            "cs": "HERC-ENG",
+            "role": "engineer",
+            "name": "Serma. Hendra Wijaya",
+            "unit": "FW-C130-01",
+            "exp_yr": 16,
+            "certs": [
+              "C-130 Powerplant"
+            ],
+            "weight_kg": 82,
+            "as": "OEW"
+          },
+          {
+            "cs": "HERC-LM",
+            "role": "loadmaster",
+            "name": "Serka. Agus Priyanto",
+            "unit": "FW-C130-01",
+            "exp_yr": 14,
+            "certs": [
+              "463L",
+              "Airdrop"
+            ],
+            "weight_kg": 80,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR-PIC",
+            "role": "pilot",
+            "name": "Mayor Deni Kurniawan",
+            "unit": "RW-CAR-05",
+            "exp_yr": 21,
+            "certs": [
+              "EC725 TR",
+              "Mountain Rotary",
+              "NVG"
+            ],
+            "weight_kg": 83,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR-CP",
+            "role": "co_pilot",
+            "name": "Kapt. Rizky Ananda",
+            "unit": "RW-CAR-05",
+            "exp_yr": 12,
+            "certs": [
+              "EC725 TR"
+            ],
+            "weight_kg": 79,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR-ENG",
+            "role": "engineer",
+            "name": "Serka. Rudi Hartanto",
+            "unit": "RW-CAR-05",
+            "exp_yr": 14,
+            "certs": [
+              "EC725 Airframe"
+            ],
+            "weight_kg": 81,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR-DG",
+            "role": "door_gunner",
+            "name": "Praka. Yusuf Maulana",
+            "unit": "RW-CAR-05",
+            "exp_yr": 6,
+            "certs": [
+              "Sling Load",
+              "Fast Rope"
+            ],
+            "weight_kg": 77,
+            "as": "OEW"
+          }
+        ],
+        "pax": [
+          {
+            "id": "PAX-WMN",
+            "dest": "WAJW",
+            "cat": "combat_troops",
+            "count": 30,
+            "weight_ea": 100,
+            "total_kg": 3000,
+            "unit": "FW-C130-01",
+            "as": "PAYLOAD"
+          },
+          {
+            "id": "PAX-ILG",
+            "dest": "WAYL",
+            "cat": "combat_troops",
+            "count": 10,
+            "weight_ea": 100,
+            "total_kg": 1000,
+            "unit": "RW-CAR-05",
+            "as": "PAYLOAD"
+          },
+          {
+            "id": "PAX-OKS",
+            "dest": "WABP",
+            "cat": "combat_troops",
+            "count": 10,
+            "weight_ea": 100,
+            "total_kg": 1000,
+            "unit": "RW-CAR-05",
+            "as": "PAYLOAD"
+          }
+        ],
+        "modules": [
+          {
+            "id": "MOD-001",
+            "name": "463L Cargo Pallets",
+            "unit": "FW-C130-01"
+          },
+          {
+            "id": "MOD-002",
+            "name": "Sling Load System",
+            "unit": "RW-CAR-05"
+          }
+        ],
+        "transport_ops": [
+          {
+            "unit_id": "FW-C130-01",
+            "transport_mode": "AIR",
+            "loading_method": "463L_PALLET",
+            "load_time_min": 45,
+            "unload_time_min": 30,
+            "turnaround_min": 90,
+            "refuel_time_min": 45
+          },
+          {
+            "unit_id": "RW-CAR-05",
+            "transport_mode": "AIR",
+            "loading_method": "SLING_LOAD",
+            "load_time_min": 25,
+            "unload_time_min": 15,
+            "turnaround_min": 50,
+            "refuel_time_min": 20
+          }
+        ]
+      },
+      "phases": [
+        {
+          "id": "P1",
+          "name": "Wamena Airbridge",
+          "status": "PENDING",
+          "desc": "2x C-130 Sentani→Wamena (10T+15 troops/sortie)"
+        },
+        {
+          "id": "P2",
+          "name": "Highland Heli Drops",
+          "status": "PENDING",
+          "desc": "8x EC725 Timika→Ilaga(4)+Oksibil(4)"
+        }
+      ],
+      "timeline": {
+        "duration_hours": 22,
+        "operational_days": 2,
+        "milestones": [
+          {
+            "t": "D+0 06:00",
+            "event": "C-130 Sortie 1 launch — 10T + 15 troops"
+          },
+          {
+            "t": "D+0 06:30",
+            "event": "EC725 Sortie 1 launch → Ilaga"
+          },
+          {
+            "t": "D+0 07:00",
+            "event": "C-130 LZ Wamena — offload"
+          },
+          {
+            "t": "D+0 07:30",
+            "event": "EC725 LZ Ilaga — offload"
+          },
+          {
+            "t": "D+0 10:00",
+            "event": "C-130 Sortie 2 complete — Wamena FULL"
+          },
+          {
+            "t": "D+0 10:30",
+            "event": "WX HOLD Ilaga (kabut)"
+          },
+          {
+            "t": "D+1 06:00",
+            "event": "Resume EC725 sorties"
+          },
+          {
+            "t": "D+1 10:30",
+            "event": "ALL DELIVERED — MISSION COMPLETE"
+          }
+        ]
+      },
+      "routes": [
+        {
+          "id": "R1",
+          "from": "WAJJ",
+          "to": "WAJW",
+          "ac": "C-130",
+          "dist_nm": 134,
+          "dur_min": 55,
+          "difficulty": "MODERATE",
+          "dep_window": {
+            "start": "06:00",
+            "end": "09:00",
+            "confidence": "HIGH"
+          },
+          "pilot_brief": [
+            "Terrain rising rapidly post-TOC — maintain FL150 min",
+            "Crosswind 5-8 kt from S on approach Wamena"
+          ],
+          "waypoints": [
+            {
+              "id": "WP01",
+              "lat": -2.5766,
+              "lng": 140.5163,
+              "alt_ft": 2000,
+              "label": "T/O Sentani",
+              "action": "takeoff"
+            },
+            {
+              "id": "WP02",
+              "lat": -3.3,
+              "lng": 139.8,
+              "alt_ft": 15000,
+              "label": "TOC",
+              "action": "cruise"
+            },
+            {
+              "id": "WP03",
+              "lat": -3.8,
+              "lng": 139.2,
+              "alt_ft": 12000,
+              "label": "TOD",
+              "action": "descent"
+            },
+            {
+              "id": "WP04",
+              "lat": -4.0763,
+              "lng": 138.9527,
+              "alt_ft": 5435,
+              "label": "LZ Wamena",
+              "action": "land"
+            }
+          ]
+        },
+        {
+          "id": "R2",
+          "from": "WABT",
+          "to": "WAYL",
+          "ac": "EC725",
+          "dist_nm": 65,
+          "dur_min": 35,
+          "difficulty": "HARD",
+          "dep_window": {
+            "start": "06:00",
+            "end": "08:30",
+            "confidence": "HIGH"
+          },
+          "pilot_brief": [
+            "Valley approach — maintain visual ref at all times",
+            "Downdraft at ridge pass WP07 — increase collective margin",
+            "Gravel runway — FOD risk"
+          ],
+          "waypoints": [
+            {
+              "id": "WP05",
+              "lat": -4.528,
+              "lng": 136.8872,
+              "alt_ft": 1000,
+              "label": "T/O Timika",
+              "action": "takeoff"
+            },
+            {
+              "id": "WP06",
+              "lat": -4.25,
+              "lng": 137.1,
+              "alt_ft": 8000,
+              "label": "Valley Entry",
+              "action": "cruise"
+            },
+            {
+              "id": "WP07",
+              "lat": -4.05,
+              "lng": 137.4,
+              "alt_ft": 8500,
+              "label": "Ridge Pass",
+              "action": "cruise"
+            },
+            {
+              "id": "WP08",
+              "lat": -3.9772,
+              "lng": 137.6202,
+              "alt_ft": 7989,
+              "label": "LZ Ilaga",
+              "action": "land"
+            }
+          ]
+        }
+      ],
+      "map": {
+        "routes": [
+          {
+            "name": "Sentani→Wamena",
+            "coords": [
+              [
+                140.516,
+                -2.576
+              ],
+              [
+                139.8,
+                -3.3
+              ],
+              [
+                139.2,
+                -3.8
+              ],
+              [
+                138.952,
+                -4.076
+              ]
+            ],
+            "color": "#00ffff",
+            "width": 4
+          },
+          {
+            "name": "Timika→Ilaga",
+            "coords": [
+              [
+                136.887,
+                -4.528
+              ],
+              [
+                137.1,
+                -4.25
+              ],
+              [
+                137.4,
+                -4.05
+              ],
+              [
+                137.62,
+                -3.977
+              ]
+            ],
+            "color": "#ff9900",
+            "width": 3
+          }
+        ],
+        "symbols": [
+          {
+            "name": "Base Sentani",
+            "coords": [
+              140.516,
+              -2.576
+            ],
+            "sidc": "SFGPUH-----",
+            "color": "#4ade80"
+          },
+          {
+            "name": "Base Timika",
+            "coords": [
+              136.887,
+              -4.528
+            ],
+            "sidc": "SFGPUH-----",
+            "color": "#4ade80"
+          },
+          {
+            "name": "LZ Wamena",
+            "coords": [
+              138.952,
+              -4.076
+            ],
+            "sidc": "SFAPMFT----",
+            "color": "#00bfff"
+          },
+          {
+            "name": "LZ Ilaga",
+            "coords": [
+              137.62,
+              -3.977
+            ],
+            "sidc": "SFAPMFT----",
+            "color": "#ff9900"
+          }
+        ],
+        "areas": [
+          {
+            "name": "AO Papua",
+            "coords": [
+              [
+                136.5,
+                -2.5
+              ],
+              [
+                141.0,
+                -2.5
+              ],
+              [
+                141.0,
+                -5.5
+              ],
+              [
+                136.5,
+                -5.5
+              ]
+            ],
+            "color": "#4ade80",
+            "opacity": 0.08
+          }
+        ]
+      },
+      "simulation": {
+        "id": "SIM-001",
+        "theater": "Papua Highland",
+        "duration_s": 180,
+        "aoi": {
+          "center": [
+            138.952,
+            -4.097
+          ],
+          "zoom": 8,
+          "pitch": 55,
+          "bearing": 30
+        },
+        "units": [
+          {
+            "id": "u1",
+            "cs": "HERC-1",
+            "type": "ally",
+            "unit": "transport",
+            "color": "#00bfff",
+            "path": [
+              {
+                "t": 0,
+                "lng": 140.516,
+                "lat": -2.576,
+                "alt": 300,
+                "spd": 0,
+                "act": "takeoff"
+              },
+              {
+                "t": 20,
+                "lng": 140.2,
+                "lat": -2.8,
+                "alt": 5000,
+                "spd": 450,
+                "act": "cruise"
+              },
+              {
+                "t": 60,
+                "lng": 139.5,
+                "lat": -3.5,
+                "alt": 15000,
+                "spd": 480,
+                "act": "cruise"
+              },
+              {
+                "t": 100,
+                "lng": 139.1,
+                "lat": -3.9,
+                "alt": 10000,
+                "spd": 400,
+                "act": "cruise"
+              },
+              {
+                "t": 140,
+                "lng": 138.95,
+                "lat": -4.07,
+                "alt": 5435,
+                "spd": 200,
+                "act": "land"
+              }
+            ]
+          },
+          {
+            "id": "u2",
+            "cs": "CAR-1",
+            "type": "ally",
+            "unit": "helicopter",
+            "color": "#ff9900",
+            "path": [
+              {
+                "t": 10,
+                "lng": 136.887,
+                "lat": -4.528,
+                "alt": 200,
+                "spd": 0,
+                "act": "hover"
+              },
+              {
+                "t": 30,
+                "lng": 137.0,
+                "lat": -4.4,
+                "alt": 3000,
+                "spd": 220,
+                "act": "cruise"
+              },
+              {
+                "t": 80,
+                "lng": 137.3,
+                "lat": -4.1,
+                "alt": 8000,
+                "spd": 200,
+                "act": "cruise"
+              },
+              {
+                "t": 120,
+                "lng": 137.5,
+                "lat": -4.0,
+                "alt": 8500,
+                "spd": 180,
+                "act": "cruise"
+              },
+              {
+                "t": 160,
+                "lng": 137.62,
+                "lat": -3.977,
+                "alt": 7989,
+                "spd": 0,
+                "act": "land"
+              }
+            ]
+          }
+        ],
+        "events": [
+          {
+            "t": 0,
+            "type": "phase",
+            "label": "LAUNCH"
+          },
+          {
+            "t": 20,
+            "type": "alert",
+            "label": "HERC-1 airborne — 10T+15pax",
+            "unit": "u1"
+          },
+          {
+            "t": 30,
+            "type": "alert",
+            "label": "CAR-1 airborne — 2T+3pax",
+            "unit": "u2"
+          },
+          {
+            "t": 100,
+            "type": "phase",
+            "label": "APPROACH"
+          },
+          {
+            "t": 140,
+            "type": "objective",
+            "label": "HERC-1 LZ Wamena",
+            "unit": "u1"
+          },
+          {
+            "t": 142,
+            "type": "cargo_unload",
+            "label": "Offload cargo at LZ",
+            "unit": "u1"
+          },
+          {
+            "t": 144,
+            "type": "pax_disembark",
+            "label": "Troops disembark",
+            "unit": "u1"
+          },
+          {
+            "t": 160,
+            "type": "objective",
+            "label": "CAR-1 LZ Ilaga",
+            "unit": "u2"
+          },
+          {
+            "t": 162,
+            "type": "cargo_unload",
+            "label": "Offload cargo at LZ",
+            "unit": "u2"
+          },
+          {
+            "t": 164,
+            "type": "pax_disembark",
+            "label": "Troops disembark",
+            "unit": "u2"
+          }
+        ],
+        "sim_phases": [
+          {
+            "name": "Launch",
+            "start": 0,
+            "end": 60
+          },
+          {
+            "name": "Approach",
+            "start": 60,
+            "end": 180
+          }
+        ],
+        "event_types": [
+          "phase",
+          "alert",
+          "objective",
+          "cargo_load",
+          "cargo_unload",
+          "pax_embark",
+          "pax_disembark",
+          "refuel",
+          "weather_hold",
+          "contingency_reroute",
+          "runway_unavailable"
+        ]
+      }
+    },
+    {
+      "mission_identity": {
+        "operation_name": "OP LOGISTIK PAPUA — SAFETY FIRST",
+        "coa_id": "COA-PAPUA-002",
+        "rank": 2,
+        "status": "OPTIMIZED",
+        "label": "Teraman",
+        "description": "EC725-only ke semua LZ. Menghindari risiko C-130 di dataran tinggi. 4 hari.",
+        "coa_category": "PERSONNEL_FIRST_SAFETY"
+      },
+      "operational_details": {
+        "commander": "Komandan Satgas Udara (Ops Pangan Papua)",
+        "comms": {
+          "primary": "UHF/VHF Ch-1 Satgas",
+          "alternate": "SATCOM",
+          "contingency": "HF Radio",
+          "emergency": "121.5 MHz"
+        },
+        "roe": "Non-Combatant / Logistics Support"
+      },
+      "objectives": {
+        "primary": "Distribusi 38T cargo + 50 troops dengan risiko operasional minimum",
+        "secondary": [
+          "Menghindari operasi C-130 di runway marginal"
+        ],
+        "constraints": [
+          "MTOW dataran tinggi",
+          "Jendela cuaca 06.00-11.00 WIT",
+          "Hanya rotary wing"
+        ]
+      },
+      "scoring": {
+        "aggregate": 88,
+        "confidence": "HIGH",
+        "quality_gate": true,
+        "breakdown": {
+          "delivery_efficiency": 22.0,
+          "safety": 25.0,
+          "temporal": 16.0,
+          "fuel_efficiency": 15.0,
+          "environmental": 10.0
+        }
+      },
+      "risk": {
+        "threat_level": "LOW",
+        "primary_strategy": "Seluruh misi via rotary wing — eliminasi risiko runway marginal",
+        "contingency": "Jika EC725 non-operasional → aktifkan Cessna 208B STOL ke Oksibil",
+        "triggers": [
+          {
+            "if": "EC725 serviceability < 80%",
+            "then": "Aktifkan Cessna 208B backup",
+            "evidence": [
+              "Logbook EC725 clear"
+            ]
+          }
+        ]
+      },
+      "strategic_summary": [
+        "Misi GO. Semua destinasi dijangkau EC725 (OGE ceiling 9.500 ft). Margin keamanan terbesar di semua leg — tidak ada operasi fixed-wing di runway pendek.",
+        "Risiko SIGINT LOW. Profil terbang rendah rotary wing mengurangi radar cross-section. Terrain masking natural di pegunungan.",
+        "EC725 HA-5201 & HA-5202 serviceability 98%. Dua kru rotary senior (PIC 21 thn + PIC 15 thn Papua exp). Refueling Timika setiap 2 sortie."
+      ],
+      "analysis": {
+        "strengths": [
+          "Risiko paling rendah — no fixed-wing di dataran tinggi",
+          "Fleksibilitas LZ — bisa landing di helipad/clearing",
+          "Dua unit EC725 paralel mengurangi bottleneck"
+        ],
+        "weaknesses": [
+          "4 hari operasi — 2x lebih lambat dari COA-1",
+          "16 sorties total — kelelahan kru tinggi",
+          "Fuel burn 35% lebih banyak dari COA-1"
+        ],
+        "terrain": [
+          "WAJW: 2.175m aspal, 5.085 ft — EC725 margins besar",
+          "WAYL: 920m gravel, 7.923 ft — EC725 OGE OK (margin 1.577 ft)",
+          "WABP: 1.200m gravel, 4.315 ft — EC725 comfortable"
+        ],
+        "environment": {
+          "per_dest": [
+            {
+              "icao": "WAJW",
+              "vis_km": 8,
+              "wind_kt": 5,
+              "ceiling_ft": 15000,
+              "rmk": "CAVOK pagi"
+            },
+            {
+              "icao": "WAYL",
+              "vis_km": 5,
+              "wind_kt": 8,
+              "ceiling_ft": 8000,
+              "rmk": "Kabut 11.00 WIT"
+            },
+            {
+              "icao": "WABP",
+              "vis_km": 7,
+              "wind_kt": 6,
+              "ceiling_ft": 12000,
+              "rmk": "Clear"
+            }
+          ]
+        },
+        "aoi": {
+          "center": [
+            -4.097,
+            138.952
+          ],
+          "radius_km": 250,
+          "bbox": [
+            136.5,
+            -5.5,
+            141.0,
+            -2.5
+          ]
+        },
+        "key_features": [
+          {
+            "name": "Bandara Wamena",
+            "type": "airport",
+            "coords": [
+              138.952,
+              -4.076
+            ],
+            "note": "Hub EC725"
+          },
+          {
+            "name": "LZ Ilaga",
+            "type": "airstrip",
+            "coords": [
+              137.62,
+              -3.977
+            ],
+            "note": "High-alt — EC725 OGE OK"
+          },
+          {
+            "name": "Lanud Timika",
+            "type": "military_base",
+            "coords": [
+              136.887,
+              -4.528
+            ],
+            "note": "Refueling hub"
+          }
+        ],
+        "threat": {
+          "level": "LOW",
+          "score": 20,
+          "factors": [
+            {
+              "name": "weather_fog",
+              "w": 0.6,
+              "desc": "Kabut lembah siang"
+            },
+            {
+              "name": "crew_fatigue",
+              "w": 0.4,
+              "desc": "16 sorties — fatigue management"
+            }
+          ]
+        },
+        "recommended_approach": "All-Helicopter Multi-Sortie"
+      },
+      "technical": {
+        "status": "VALID",
+        "mass_balance": [
+          {
+            "leg": "WABT→WAJW",
+            "ac": "EC725",
+            "oew": 5300,
+            "crew": 320,
+            "fuel": 2800,
+            "cargo": 2000,
+            "troops": 300,
+            "gw": 10720,
+            "mtow": 11000,
+            "margin_pct": 2.5,
+            "status": "VALID"
+          },
+          {
+            "leg": "WABT→WAYL",
+            "ac": "EC725",
+            "oew": 5300,
+            "crew": 320,
+            "fuel": 2400,
+            "cargo": 2000,
+            "troops": 300,
+            "gw": 10320,
+            "mtow": 11000,
+            "margin_pct": 6.2,
+            "status": "VALID"
+          },
+          {
+            "leg": "WABT→WABP",
+            "ac": "EC725",
+            "oew": 5300,
+            "crew": 320,
+            "fuel": 2600,
+            "cargo": 2000,
+            "troops": 300,
+            "gw": 10520,
+            "mtow": 11000,
+            "margin_pct": 4.4,
+            "status": "VALID"
+          }
+        ],
+        "performance": [
+          {
+            "check": "oge_ceiling",
+            "ac": "EC725",
+            "dest": "WAJW",
+            "req_ft": 5085,
+            "avail_ft": 9500,
+            "margin_ft": 4415,
+            "s": "VALID"
+          },
+          {
+            "check": "oge_ceiling",
+            "ac": "EC725",
+            "dest": "WAYL",
+            "req_ft": 7923,
+            "avail_ft": 9500,
+            "margin_ft": 1577,
+            "s": "VALID"
+          },
+          {
+            "check": "oge_ceiling",
+            "ac": "EC725",
+            "dest": "WABP",
+            "req_ft": 4315,
+            "avail_ft": 9500,
+            "margin_ft": 5185,
+            "s": "VALID"
+          }
+        ],
+        "fuel": {
+          "trip_kg": 18000,
+          "reserve_kg": 4800,
+          "reserve_min": 45,
+          "compliance": "VALID",
+          "per_phase": [
+            {
+              "phase": "climb",
+              "kg": 4200
+            },
+            {
+              "phase": "cruise",
+              "kg": 10800
+            },
+            {
+              "phase": "descent",
+              "kg": 1800
+            },
+            {
+              "phase": "reserve",
+              "kg": 4800
+            }
+          ]
+        },
+        "hard_gates": {
+          "total": 8,
+          "pass": 8,
+          "fail": 0,
+          "checks": [
+            "MTOW",
+            "Runway Length",
+            "Service Ceiling",
+            "OGE Ceiling",
+            "Crosswind",
+            "Density Alt",
+            "Fuel Endurance",
+            "Climb Gradient"
+          ]
+        },
+        "feasibility_verdict": {
+          "status": "FEASIBLE",
+          "hard_gate_pass": true,
+          "notes": "Semua 8 hard gate checks lulus. Misi layak secara teknis."
+        }
+      },
+      "tasking": {
+        "assets": [
+          {
+            "unit_id": "RW-CAR-05",
+            "ac": "EC725 Caracal",
+            "reg": "HA-5201",
+            "base": "WABT",
+            "co_located": true,
+            "ferry": false,
+            "task": "Wamena + Ilaga — 24T + 30 troops (12 sorties)",
+            "per_sortie": {
+              "cargo_kg": 2000,
+              "troops": 3,
+              "total_kg": 2300
+            }
+          },
+          {
+            "unit_id": "RW-CAR-06",
+            "ac": "EC725 Caracal",
+            "reg": "HA-5202",
+            "base": "WABT",
+            "co_located": true,
+            "ferry": false,
+            "task": "Oksibil — 14T + 20 troops (6 sorties)",
+            "per_sortie": {
+              "cargo_kg": 2000,
+              "troops": 3,
+              "total_kg": 2300
+            }
+          }
+        ],
+        "health": [
+          {
+            "unit": "RW-CAR-05",
+            "status": "MISSION_READY",
+            "hours": 3200,
+            "next_mx": "2026-04-10",
+            "svc_score": 98
+          },
+          {
+            "unit": "RW-CAR-06",
+            "status": "MISSION_READY",
+            "hours": 2800,
+            "next_mx": "2026-04-12",
+            "svc_score": 96
+          }
+        ],
+        "crew": [
+          {
+            "cs": "CAR1-PIC",
+            "role": "pilot",
+            "name": "Mayor Deni Kurniawan",
+            "unit": "RW-CAR-05",
+            "exp_yr": 21,
+            "certs": [
+              "EC725 TR",
+              "Mountain Rotary",
+              "NVG"
+            ],
+            "weight_kg": 83,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR1-CP",
+            "role": "co_pilot",
+            "name": "Kapt. Rizky Ananda",
+            "unit": "RW-CAR-05",
+            "exp_yr": 12,
+            "certs": [
+              "EC725 TR"
+            ],
+            "weight_kg": 79,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR1-ENG",
+            "role": "engineer",
+            "name": "Serka. Rudi Hartanto",
+            "unit": "RW-CAR-05",
+            "exp_yr": 14,
+            "certs": [
+              "EC725 Airframe"
+            ],
+            "weight_kg": 81,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR1-DG",
+            "role": "door_gunner",
+            "name": "Praka. Yusuf Maulana",
+            "unit": "RW-CAR-05",
+            "exp_yr": 6,
+            "certs": [
+              "Sling Load",
+              "Fast Rope"
+            ],
+            "weight_kg": 77,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR2-PIC",
+            "role": "pilot",
+            "name": "Kapt. Irfan Hakim",
+            "unit": "RW-CAR-06",
+            "exp_yr": 15,
+            "certs": [
+              "EC725 TR",
+              "Mountain Rotary"
+            ],
+            "weight_kg": 80,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR2-CP",
+            "role": "co_pilot",
+            "name": "Lettu. Rama Putra",
+            "unit": "RW-CAR-06",
+            "exp_yr": 8,
+            "certs": [
+              "EC725 TR"
+            ],
+            "weight_kg": 76,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR2-ENG",
+            "role": "engineer",
+            "name": "Serka. Dimas Saputra",
+            "unit": "RW-CAR-06",
+            "exp_yr": 10,
+            "certs": [
+              "EC725 Airframe"
+            ],
+            "weight_kg": 78,
+            "as": "OEW"
+          }
+        ],
+        "pax": [
+          {
+            "id": "PAX-WMN",
+            "dest": "WAJW",
+            "cat": "combat_troops",
+            "count": 30,
+            "weight_ea": 100,
+            "total_kg": 3000,
+            "unit": "RW-CAR-05",
+            "as": "PAYLOAD"
+          },
+          {
+            "id": "PAX-ILG",
+            "dest": "WAYL",
+            "cat": "combat_troops",
+            "count": 10,
+            "weight_ea": 100,
+            "total_kg": 1000,
+            "unit": "RW-CAR-05",
+            "as": "PAYLOAD"
+          },
+          {
+            "id": "PAX-OKS",
+            "dest": "WABP",
+            "cat": "combat_troops",
+            "count": 10,
+            "weight_ea": 100,
+            "total_kg": 1000,
+            "unit": "RW-CAR-06",
+            "as": "PAYLOAD"
+          }
+        ],
+        "modules": [
+          {
+            "id": "MOD-003",
+            "name": "Sling Load System",
+            "unit": "RW-CAR-05"
+          },
+          {
+            "id": "MOD-004",
+            "name": "Sling Load System",
+            "unit": "RW-CAR-06"
+          }
+        ],
+        "transport_ops": [
+          {
+            "unit_id": "RW-CAR-05",
+            "transport_mode": "AIR",
+            "loading_method": "SLING_LOAD",
+            "load_time_min": 25,
+            "unload_time_min": 15,
+            "turnaround_min": 50,
+            "refuel_time_min": 20
+          },
+          {
+            "unit_id": "RW-CAR-06",
+            "transport_mode": "AIR",
+            "loading_method": "SLING_LOAD",
+            "load_time_min": 25,
+            "unload_time_min": 15,
+            "turnaround_min": 50,
+            "refuel_time_min": 20
+          }
+        ]
+      },
+      "phases": [
+        {
+          "id": "P1",
+          "name": "Wamena Heli Bridge",
+          "status": "PENDING",
+          "desc": "8x EC725-1 Timika→Wamena (2T+3 troops/sortie)"
+        },
+        {
+          "id": "P2",
+          "name": "Ilaga Drops",
+          "status": "PENDING",
+          "desc": "4x EC725-1 Timika→Ilaga (2T+3 troops/sortie)"
+        },
+        {
+          "id": "P3",
+          "name": "Oksibil Drops",
+          "status": "PENDING",
+          "desc": "6x EC725-2 Timika→Oksibil (2T+3 troops/sortie)"
+        }
+      ],
+      "timeline": {
+        "duration_hours": 44,
+        "operational_days": 4,
+        "milestones": [
+          {
+            "t": "D+0 06:00",
+            "event": "EC725-1 Sortie 1 → Wamena"
+          },
+          {
+            "t": "D+0 06:30",
+            "event": "EC725-2 Sortie 1 → Oksibil"
+          },
+          {
+            "t": "D+0 10:30",
+            "event": "WX HOLD — kabut siang"
+          },
+          {
+            "t": "D+1 06:00",
+            "event": "Resume — Wamena + Ilaga sorties"
+          },
+          {
+            "t": "D+2 06:00",
+            "event": "Final Oksibil sorties"
+          },
+          {
+            "t": "D+3 10:00",
+            "event": "ALL DELIVERED — MISSION COMPLETE"
+          }
+        ]
+      },
+      "routes": [
+        {
+          "id": "R1",
+          "from": "WABT",
+          "to": "WAJW",
+          "ac": "EC725",
+          "dist_nm": 180,
+          "dur_min": 75,
+          "difficulty": "MODERATE",
+          "dep_window": {
+            "start": "06:00",
+            "end": "08:00",
+            "confidence": "HIGH"
+          },
+          "pilot_brief": [
+            "Long range sortie — refuel required Timika RTB",
+            "Mountain crossing FL085 — terrain awareness"
+          ],
+          "waypoints": [
+            {
+              "id": "WP01",
+              "lat": -4.528,
+              "lng": 136.887,
+              "alt_ft": 1000,
+              "label": "T/O Timika",
+              "action": "takeoff"
+            },
+            {
+              "id": "WP02",
+              "lat": -4.2,
+              "lng": 137.5,
+              "alt_ft": 8500,
+              "label": "Mountain Pass",
+              "action": "cruise"
+            },
+            {
+              "id": "WP03",
+              "lat": -4.076,
+              "lng": 138.952,
+              "alt_ft": 5435,
+              "label": "LZ Wamena",
+              "action": "land"
+            }
+          ]
+        },
+        {
+          "id": "R2",
+          "from": "WABT",
+          "to": "WAYL",
+          "ac": "EC725",
+          "dist_nm": 65,
+          "dur_min": 35,
+          "difficulty": "HARD",
+          "dep_window": {
+            "start": "06:00",
+            "end": "08:30",
+            "confidence": "HIGH"
+          },
+          "pilot_brief": [
+            "Valley approach — visual ref mandatory",
+            "Gravel surface — FOD risk"
+          ],
+          "waypoints": [
+            {
+              "id": "WP04",
+              "lat": -4.528,
+              "lng": 136.887,
+              "alt_ft": 1000,
+              "label": "T/O Timika",
+              "action": "takeoff"
+            },
+            {
+              "id": "WP05",
+              "lat": -4.05,
+              "lng": 137.4,
+              "alt_ft": 8500,
+              "label": "Ridge Pass",
+              "action": "cruise"
+            },
+            {
+              "id": "WP06",
+              "lat": -3.977,
+              "lng": 137.62,
+              "alt_ft": 7989,
+              "label": "LZ Ilaga",
+              "action": "land"
+            }
+          ]
+        },
+        {
+          "id": "R3",
+          "from": "WABT",
+          "to": "WABP",
+          "ac": "EC725",
+          "dist_nm": 210,
+          "dur_min": 85,
+          "difficulty": "MODERATE",
+          "dep_window": {
+            "start": "06:00",
+            "end": "08:00",
+            "confidence": "HIGH"
+          },
+          "pilot_brief": [
+            "Longest leg — fuel management critical",
+            "Approach from south — terrain lower"
+          ],
+          "waypoints": [
+            {
+              "id": "WP07",
+              "lat": -4.528,
+              "lng": 136.887,
+              "alt_ft": 1000,
+              "label": "T/O Timika",
+              "action": "takeoff"
+            },
+            {
+              "id": "WP08",
+              "lat": -4.6,
+              "lng": 139.0,
+              "alt_ft": 7000,
+              "label": "Waypoint South",
+              "action": "cruise"
+            },
+            {
+              "id": "WP09",
+              "lat": -4.906,
+              "lng": 140.629,
+              "alt_ft": 4315,
+              "label": "LZ Oksibil",
+              "action": "land"
+            }
+          ]
+        }
+      ],
+      "map": {
+        "routes": [
+          {
+            "name": "Timika→Wamena",
+            "coords": [
+              [
+                136.887,
+                -4.528
+              ],
+              [
+                137.5,
+                -4.2
+              ],
+              [
+                138.952,
+                -4.076
+              ]
+            ],
+            "color": "#ff9900",
+            "width": 3
+          },
+          {
+            "name": "Timika→Ilaga",
+            "coords": [
+              [
+                136.887,
+                -4.528
+              ],
+              [
+                137.4,
+                -4.05
+              ],
+              [
+                137.62,
+                -3.977
+              ]
+            ],
+            "color": "#ff6600",
+            "width": 3
+          },
+          {
+            "name": "Timika→Oksibil",
+            "coords": [
+              [
+                136.887,
+                -4.528
+              ],
+              [
+                139.0,
+                -4.6
+              ],
+              [
+                140.629,
+                -4.906
+              ]
+            ],
+            "color": "#ffcc00",
+            "width": 3
+          }
+        ],
+        "symbols": [
+          {
+            "name": "Base Timika",
+            "coords": [
+              136.887,
+              -4.528
+            ],
+            "sidc": "SFGPUH-----",
+            "color": "#4ade80"
+          },
+          {
+            "name": "LZ Wamena",
+            "coords": [
+              138.952,
+              -4.076
+            ],
+            "sidc": "SFAPMFT----",
+            "color": "#ff9900"
+          },
+          {
+            "name": "LZ Ilaga",
+            "coords": [
+              137.62,
+              -3.977
+            ],
+            "sidc": "SFAPMFT----",
+            "color": "#ff6600"
+          },
+          {
+            "name": "LZ Oksibil",
+            "coords": [
+              140.629,
+              -4.906
+            ],
+            "sidc": "SFAPMFT----",
+            "color": "#ffcc00"
+          }
+        ],
+        "areas": [
+          {
+            "name": "AO Papua",
+            "coords": [
+              [
+                136.5,
+                -2.5
+              ],
+              [
+                141.0,
+                -2.5
+              ],
+              [
+                141.0,
+                -5.5
+              ],
+              [
+                136.5,
+                -5.5
+              ]
+            ],
+            "color": "#4ade80",
+            "opacity": 0.08
+          }
+        ]
+      },
+      "simulation": {
+        "id": "SIM-002",
+        "theater": "Papua Highland",
+        "duration_s": 240,
+        "aoi": {
+          "center": [
+            138.952,
+            -4.097
+          ],
+          "zoom": 7,
+          "pitch": 55,
+          "bearing": 30
+        },
+        "units": [
+          {
+            "id": "u1",
+            "cs": "CAR-1",
+            "type": "ally",
+            "unit": "helicopter",
+            "color": "#ff9900",
+            "path": [
+              {
+                "t": 0,
+                "lng": 136.887,
+                "lat": -4.528,
+                "alt": 200,
+                "spd": 0,
+                "act": "hover"
+              },
+              {
+                "t": 40,
+                "lng": 137.5,
+                "lat": -4.2,
+                "alt": 8500,
+                "spd": 200,
+                "act": "cruise"
+              },
+              {
+                "t": 120,
+                "lng": 138.952,
+                "lat": -4.076,
+                "alt": 5435,
+                "spd": 0,
+                "act": "land"
+              }
+            ]
+          },
+          {
+            "id": "u2",
+            "cs": "CAR-2",
+            "type": "ally",
+            "unit": "helicopter",
+            "color": "#ffcc00",
+            "path": [
+              {
+                "t": 10,
+                "lng": 136.887,
+                "lat": -4.528,
+                "alt": 200,
+                "spd": 0,
+                "act": "hover"
+              },
+              {
+                "t": 60,
+                "lng": 139.0,
+                "lat": -4.6,
+                "alt": 7000,
+                "spd": 190,
+                "act": "cruise"
+              },
+              {
+                "t": 140,
+                "lng": 140.629,
+                "lat": -4.906,
+                "alt": 4315,
+                "spd": 0,
+                "act": "land"
+              }
+            ]
+          }
+        ],
+        "events": [
+          {
+            "t": 0,
+            "type": "phase",
+            "label": "LAUNCH"
+          },
+          {
+            "t": 10,
+            "type": "alert",
+            "label": "CAR-1 → Wamena, CAR-2 → Oksibil",
+            "unit": "u1"
+          },
+          {
+            "t": 120,
+            "type": "objective",
+            "label": "CAR-1 LZ Wamena",
+            "unit": "u1"
+          },
+          {
+            "t": 122,
+            "type": "cargo_unload",
+            "label": "Offload cargo at LZ",
+            "unit": "u1"
+          },
+          {
+            "t": 124,
+            "type": "pax_disembark",
+            "label": "Troops disembark",
+            "unit": "u1"
+          },
+          {
+            "t": 140,
+            "type": "objective",
+            "label": "CAR-2 LZ Oksibil",
+            "unit": "u2"
+          },
+          {
+            "t": 142,
+            "type": "cargo_unload",
+            "label": "Offload cargo at LZ",
+            "unit": "u2"
+          },
+          {
+            "t": 144,
+            "type": "pax_disembark",
+            "label": "Troops disembark",
+            "unit": "u2"
+          }
+        ],
+        "sim_phases": [
+          {
+            "name": "Launch",
+            "start": 0,
+            "end": 60
+          },
+          {
+            "name": "Transit",
+            "start": 60,
+            "end": 180
+          },
+          {
+            "name": "Landing",
+            "start": 180,
+            "end": 240
+          }
+        ],
+        "event_types": [
+          "phase",
+          "alert",
+          "objective",
+          "cargo_load",
+          "cargo_unload",
+          "pax_embark",
+          "pax_disembark",
+          "refuel",
+          "weather_hold",
+          "contingency_reroute",
+          "runway_unavailable"
+        ]
+      }
+    },
+    {
+      "mission_identity": {
+        "operation_name": "OP LOGISTIK PAPUA — HYBRID STOL",
+        "coa_id": "COA-PAPUA-003",
+        "rank": 3,
+        "status": "OPTIMIZED",
+        "label": "Hemat Avtur",
+        "description": "Cessna 208B fleet ke Wamena+Oksibil, EC725 ke Ilaga. 5 hari.",
+        "coa_category": "SPLIT_SORTIE_DELIVERY"
+      },
+      "operational_details": {
+        "commander": "Komandan Satgas Udara (Ops Pangan Papua)",
+        "comms": {
+          "primary": "UHF/VHF Ch-1 Satgas",
+          "alternate": "SATCOM",
+          "contingency": "HF Radio",
+          "emergency": "121.5 MHz"
+        },
+        "roe": "Non-Combatant / Logistics Support"
+      },
+      "objectives": {
+        "primary": "Distribusi 38T cargo + 50 troops menggunakan fleet Cessna + EC725",
+        "secondary": [
+          "Efisiensi bahan bakar",
+          "Minimalisir penggunaan aset berat"
+        ],
+        "constraints": [
+          "Cessna tidak boleh ke Ilaga (7.923 ft > svc ceiling margin)",
+          "Jendela cuaca 06.00-11.00 WIT"
+        ]
+      },
+      "scoring": {
+        "aggregate": 85,
+        "confidence": "HIGH",
+        "quality_gate": true,
+        "breakdown": {
+          "delivery_efficiency": 20.0,
+          "safety": 23.0,
+          "temporal": 14.0,
+          "fuel_efficiency": 18.0,
+          "environmental": 10.0
+        }
+      },
+      "risk": {
+        "threat_level": "MEDIUM",
+        "primary_strategy": "Cessna fleet massif — 8 unit paralel mengurangi durasi total",
+        "contingency": "Jika Cessna terkena turbulence → hold Timika, resume besok pagi",
+        "triggers": [
+          {
+            "if": "Turbulence moderate >30kt",
+            "then": "Hold semua Cessna di ground",
+            "evidence": [
+              "Cessna max crosswind 15kt"
+            ]
+          },
+          {
+            "if": "Ilaga visibility < 3km",
+            "then": "EC725 hold Timika",
+            "evidence": [
+              "Kabut Ilaga historis"
+            ]
+          }
+        ]
+      },
+      "strategic_summary": [
+        "Misi GO. Cessna 208B mampu landing di Wamena (2.175m) dan Oksibil (1.200m). Payload 1.2T/sortie kecil tapi fleet 8 unit memungkinkan paralel ops.",
+        "Risiko SIGINT LOW. Cessna turboprop profil rendah — sulit terdeteksi radar. Penerbangan menyerupai komersial perintis.",
+        "8x Cessna 208B serviceability 92%. Kru junior-menengah (5-12 thn exp) tersedia dari Timika. EC725 khusus Ilaga."
+      ],
+      "analysis": {
+        "strengths": [
+          "Fuel burn terendah dari COA yang lolos gate",
+          "8 unit Cessna — high redundancy, no single point of failure",
+          "Cessna turboprop murah — sustainabilitas operasi lebih baik"
+        ],
+        "weaknesses": [
+          "5 hari operasi — terlambat untuk krisis akut",
+          "Cessna payload hanya 1.2T — butuh banyak sortie (30+)",
+          "Cessna tidak bisa akses Ilaga — tetap butuh EC725"
+        ],
+        "terrain": [
+          "WAJW: 2.175m aspal — Cessna OK",
+          "WAYL: 920m gravel, 7.923 ft — EC725 only (Cessna svc ceiling margin tipis)",
+          "WABP: 1.200m gravel, 4.315 ft — Cessna OK (STOL capable)"
+        ],
+        "environment": {
+          "per_dest": [
+            {
+              "icao": "WAJW",
+              "vis_km": 8,
+              "wind_kt": 5,
+              "ceiling_ft": 15000,
+              "rmk": "CAVOK pagi"
+            },
+            {
+              "icao": "WAYL",
+              "vis_km": 5,
+              "wind_kt": 8,
+              "ceiling_ft": 8000,
+              "rmk": "Kabut 11.00 WIT"
+            },
+            {
+              "icao": "WABP",
+              "vis_km": 7,
+              "wind_kt": 6,
+              "ceiling_ft": 12000,
+              "rmk": "Clear"
+            }
+          ]
+        },
+        "aoi": {
+          "center": [
+            -4.097,
+            138.952
+          ],
+          "radius_km": 250,
+          "bbox": [
+            136.5,
+            -5.5,
+            141.0,
+            -2.5
+          ]
+        },
+        "key_features": [
+          {
+            "name": "Bandara Wamena",
+            "type": "airport",
+            "coords": [
+              138.952,
+              -4.076
+            ],
+            "note": "Cessna + EC725 hub"
+          },
+          {
+            "name": "LZ Ilaga",
+            "type": "airstrip",
+            "coords": [
+              137.62,
+              -3.977
+            ],
+            "note": "EC725 only"
+          },
+          {
+            "name": "LZ Oksibil",
+            "type": "airstrip",
+            "coords": [
+              140.629,
+              -4.906
+            ],
+            "note": "Cessna STOL OK"
+          }
+        ],
+        "threat": {
+          "level": "MEDIUM",
+          "score": 35,
+          "factors": [
+            {
+              "name": "weather_turbulence",
+              "w": 0.5,
+              "desc": "Cessna rentan turbulensi siang"
+            },
+            {
+              "name": "duration_risk",
+              "w": 0.3,
+              "desc": "5 hari — cuaca bisa berubah"
+            },
+            {
+              "name": "terrain_cfit",
+              "w": 0.2,
+              "desc": "CFIT valley approach Ilaga"
+            }
+          ]
+        },
+        "recommended_approach": "Cessna Fleet Blanket + EC725 Ilaga Specialist"
+      },
+      "technical": {
+        "status": "VALID",
+        "mass_balance": [
+          {
+            "leg": "WABT→WAJW",
+            "ac": "C208B",
+            "oew": 2145,
+            "crew": 165,
+            "fuel": 600,
+            "cargo": 900,
+            "troops": 100,
+            "gw": 3910,
+            "mtow": 3969,
+            "margin_pct": 1.5,
+            "status": "VALID"
+          },
+          {
+            "leg": "WABT→WABP",
+            "ac": "C208B",
+            "oew": 2145,
+            "crew": 165,
+            "fuel": 700,
+            "cargo": 800,
+            "troops": 100,
+            "gw": 3910,
+            "mtow": 3969,
+            "margin_pct": 1.5,
+            "status": "VALID"
+          },
+          {
+            "leg": "WABT→WAYL",
+            "ac": "EC725",
+            "oew": 5300,
+            "crew": 320,
+            "fuel": 2400,
+            "cargo": 2000,
+            "troops": 300,
+            "gw": 10320,
+            "mtow": 11000,
+            "margin_pct": 6.2,
+            "status": "VALID"
+          }
+        ],
+        "performance": [
+          {
+            "check": "takeoff_vs_runway",
+            "ac": "C208B",
+            "dest": "WAJW",
+            "req": 800,
+            "avail": 2175,
+            "margin_pct": 63,
+            "s": "VALID"
+          },
+          {
+            "check": "takeoff_vs_runway",
+            "ac": "C208B",
+            "dest": "WABP",
+            "req": 800,
+            "avail": 1200,
+            "margin_pct": 33,
+            "s": "VALID"
+          },
+          {
+            "check": "oge_ceiling",
+            "ac": "EC725",
+            "dest": "WAYL",
+            "req_ft": 7923,
+            "avail_ft": 9500,
+            "margin_ft": 1577,
+            "s": "VALID"
+          }
+        ],
+        "fuel": {
+          "trip_kg": 8500,
+          "reserve_kg": 2200,
+          "reserve_min": 45,
+          "compliance": "VALID",
+          "per_phase": [
+            {
+              "phase": "climb",
+              "kg": 1800
+            },
+            {
+              "phase": "cruise",
+              "kg": 5100
+            },
+            {
+              "phase": "descent",
+              "kg": 900
+            },
+            {
+              "phase": "reserve",
+              "kg": 2200
+            }
+          ]
+        },
+        "hard_gates": {
+          "total": 8,
+          "pass": 8,
+          "fail": 0,
+          "checks": [
+            "MTOW",
+            "Runway Length",
+            "Service Ceiling",
+            "OGE Ceiling",
+            "Crosswind",
+            "Density Alt",
+            "Fuel Endurance",
+            "Climb Gradient"
+          ]
+        },
+        "feasibility_verdict": {
+          "status": "FEASIBLE",
+          "hard_gate_pass": true,
+          "notes": "Semua 8 hard gate checks lulus. Misi layak secara teknis."
+        }
+      },
+      "tasking": {
+        "assets": [
+          {
+            "unit_id": "FW-C208-01",
+            "ac": "Cessna 208B",
+            "reg": "PK-SZY",
+            "base": "WABT",
+            "co_located": true,
+            "ferry": false,
+            "task": "Wamena — 14T cargo + 15 troops (16 sorties)",
+            "per_sortie": {
+              "cargo_kg": 900,
+              "troops": 1,
+              "total_kg": 1000
+            }
+          },
+          {
+            "unit_id": "FW-C208-02",
+            "ac": "Cessna 208B",
+            "reg": "PK-SZZ",
+            "base": "WABT",
+            "co_located": true,
+            "ferry": false,
+            "task": "Oksibil — 8T cargo + 10 troops (11 sorties)",
+            "per_sortie": {
+              "cargo_kg": 800,
+              "troops": 1,
+              "total_kg": 900
+            }
+          },
+          {
+            "unit_id": "RW-CAR-05",
+            "ac": "EC725 Caracal",
+            "reg": "HA-5201",
+            "base": "WABT",
+            "co_located": true,
+            "ferry": false,
+            "task": "Ilaga — 10T + 10 troops (5 sorties)",
+            "per_sortie": {
+              "cargo_kg": 2000,
+              "troops": 2,
+              "total_kg": 2200
+            }
+          }
+        ],
+        "health": [
+          {
+            "unit": "FW-C208-01",
+            "status": "MISSION_READY",
+            "hours": 8900,
+            "next_mx": "2026-04-05",
+            "svc_score": 92
+          },
+          {
+            "unit": "FW-C208-02",
+            "status": "MISSION_READY",
+            "hours": 7500,
+            "next_mx": "2026-04-08",
+            "svc_score": 93
+          },
+          {
+            "unit": "RW-CAR-05",
+            "status": "MISSION_READY",
+            "hours": 3200,
+            "next_mx": "2026-04-10",
+            "svc_score": 98
+          }
+        ],
+        "crew": [
+          {
+            "cs": "CES1-PIC",
+            "role": "pilot",
+            "name": "Lettu. Ade Firmansyah",
+            "unit": "FW-C208-01",
+            "exp_yr": 12,
+            "certs": [
+              "C208B TR",
+              "Papua Perintis"
+            ],
+            "weight_kg": 78,
+            "as": "OEW"
+          },
+          {
+            "cs": "CES1-CP",
+            "role": "co_pilot",
+            "name": "Letda. Gilang Pratama",
+            "unit": "FW-C208-01",
+            "exp_yr": 5,
+            "certs": [
+              "C208B TR"
+            ],
+            "weight_kg": 72,
+            "as": "OEW"
+          },
+          {
+            "cs": "CES2-PIC",
+            "role": "pilot",
+            "name": "Kapt. Surya Dharma",
+            "unit": "FW-C208-02",
+            "exp_yr": 10,
+            "certs": [
+              "C208B TR",
+              "STOL Ops"
+            ],
+            "weight_kg": 80,
+            "as": "OEW"
+          },
+          {
+            "cs": "CES2-CP",
+            "role": "co_pilot",
+            "name": "Letda. Bayu Anggara",
+            "unit": "FW-C208-02",
+            "exp_yr": 4,
+            "certs": [
+              "C208B TR"
+            ],
+            "weight_kg": 75,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR-PIC",
+            "role": "pilot",
+            "name": "Mayor Deni Kurniawan",
+            "unit": "RW-CAR-05",
+            "exp_yr": 21,
+            "certs": [
+              "EC725 TR",
+              "Mountain Rotary",
+              "NVG"
+            ],
+            "weight_kg": 83,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR-CP",
+            "role": "co_pilot",
+            "name": "Kapt. Rizky Ananda",
+            "unit": "RW-CAR-05",
+            "exp_yr": 12,
+            "certs": [
+              "EC725 TR"
+            ],
+            "weight_kg": 79,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR-ENG",
+            "role": "engineer",
+            "name": "Serka. Rudi Hartanto",
+            "unit": "RW-CAR-05",
+            "exp_yr": 14,
+            "certs": [
+              "EC725 Airframe"
+            ],
+            "weight_kg": 81,
+            "as": "OEW"
+          }
+        ],
+        "pax": [
+          {
+            "id": "PAX-WMN",
+            "dest": "WAJW",
+            "cat": "combat_troops",
+            "count": 15,
+            "weight_ea": 100,
+            "total_kg": 1500,
+            "unit": "FW-C208-01",
+            "as": "PAYLOAD"
+          },
+          {
+            "id": "PAX-WMN2",
+            "dest": "WAJW",
+            "cat": "combat_troops",
+            "count": 15,
+            "weight_ea": 100,
+            "total_kg": 1500,
+            "unit": "RW-CAR-05",
+            "as": "PAYLOAD"
+          },
+          {
+            "id": "PAX-ILG",
+            "dest": "WAYL",
+            "cat": "combat_troops",
+            "count": 10,
+            "weight_ea": 100,
+            "total_kg": 1000,
+            "unit": "RW-CAR-05",
+            "as": "PAYLOAD"
+          },
+          {
+            "id": "PAX-OKS",
+            "dest": "WABP",
+            "cat": "combat_troops",
+            "count": 10,
+            "weight_ea": 100,
+            "total_kg": 1000,
+            "unit": "FW-C208-02",
+            "as": "PAYLOAD"
+          }
+        ],
+        "modules": [
+          {
+            "id": "MOD-005",
+            "name": "Cargo Pod (Standard)",
+            "unit": "FW-C208-01"
+          },
+          {
+            "id": "MOD-006",
+            "name": "Cargo Pod (Standard)",
+            "unit": "FW-C208-02"
+          },
+          {
+            "id": "MOD-002",
+            "name": "Sling Load System",
+            "unit": "RW-CAR-05"
+          }
+        ],
+        "transport_ops": [
+          {
+            "unit_id": "FW-C208-01",
+            "transport_mode": "AIR",
+            "loading_method": "MANUAL_BULK",
+            "load_time_min": 20,
+            "unload_time_min": 15,
+            "turnaround_min": 40,
+            "refuel_time_min": 15
+          },
+          {
+            "unit_id": "FW-C208-02",
+            "transport_mode": "AIR",
+            "loading_method": "MANUAL_BULK",
+            "load_time_min": 20,
+            "unload_time_min": 15,
+            "turnaround_min": 40,
+            "refuel_time_min": 15
+          },
+          {
+            "unit_id": "RW-CAR-05",
+            "transport_mode": "AIR",
+            "loading_method": "SLING_LOAD",
+            "load_time_min": 25,
+            "unload_time_min": 15,
+            "turnaround_min": 50,
+            "refuel_time_min": 20
+          }
+        ]
+      },
+      "phases": [
+        {
+          "id": "P1",
+          "name": "Wamena Cessna Shuttle",
+          "status": "PENDING",
+          "desc": "16x Cessna 208B Timika→Wamena"
+        },
+        {
+          "id": "P2",
+          "name": "Ilaga EC725 Drops",
+          "status": "PENDING",
+          "desc": "5x EC725 Timika→Ilaga"
+        },
+        {
+          "id": "P3",
+          "name": "Oksibil Cessna Shuttle",
+          "status": "PENDING",
+          "desc": "11x Cessna 208B Timika→Oksibil"
+        }
+      ],
+      "timeline": {
+        "duration_hours": 55,
+        "operational_days": 5,
+        "milestones": [
+          {
+            "t": "D+0 06:00",
+            "event": "Cessna-1 + Cessna-2 launch (Wamena + Oksibil)"
+          },
+          {
+            "t": "D+0 06:30",
+            "event": "EC725 Sortie 1 → Ilaga"
+          },
+          {
+            "t": "D+0 10:30",
+            "event": "WX HOLD — kabut siang"
+          },
+          {
+            "t": "D+2 10:00",
+            "event": "Wamena FULL (14T delivered)"
+          },
+          {
+            "t": "D+4 10:00",
+            "event": "ALL DELIVERED — MISSION COMPLETE"
+          }
+        ]
+      },
+      "routes": [
+        {
+          "id": "R1",
+          "from": "WABT",
+          "to": "WAJW",
+          "ac": "C208B",
+          "dist_nm": 180,
+          "dur_min": 65,
+          "difficulty": "MODERATE",
+          "dep_window": {
+            "start": "06:00",
+            "end": "09:00",
+            "confidence": "HIGH"
+          },
+          "pilot_brief": [
+            "Turboprop ceiling limited — stay below FL250",
+            "Landing Wamena RWY15 — standard approach"
+          ],
+          "waypoints": [
+            {
+              "id": "WP01",
+              "lat": -4.528,
+              "lng": 136.887,
+              "alt_ft": 500,
+              "label": "T/O Timika",
+              "action": "takeoff"
+            },
+            {
+              "id": "WP02",
+              "lat": -4.2,
+              "lng": 137.8,
+              "alt_ft": 12000,
+              "label": "TOC",
+              "action": "cruise"
+            },
+            {
+              "id": "WP03",
+              "lat": -4.076,
+              "lng": 138.952,
+              "alt_ft": 5435,
+              "label": "LZ Wamena",
+              "action": "land"
+            }
+          ]
+        },
+        {
+          "id": "R2",
+          "from": "WABT",
+          "to": "WAYL",
+          "ac": "EC725",
+          "dist_nm": 65,
+          "dur_min": 35,
+          "difficulty": "HARD",
+          "dep_window": {
+            "start": "06:00",
+            "end": "08:30",
+            "confidence": "HIGH"
+          },
+          "pilot_brief": [
+            "Valley approach — visual ref mandatory",
+            "Gravel surface — FOD risk"
+          ],
+          "waypoints": [
+            {
+              "id": "WP04",
+              "lat": -4.528,
+              "lng": 136.887,
+              "alt_ft": 1000,
+              "label": "T/O Timika",
+              "action": "takeoff"
+            },
+            {
+              "id": "WP05",
+              "lat": -4.05,
+              "lng": 137.4,
+              "alt_ft": 8500,
+              "label": "Ridge Pass",
+              "action": "cruise"
+            },
+            {
+              "id": "WP06",
+              "lat": -3.977,
+              "lng": 137.62,
+              "alt_ft": 7989,
+              "label": "LZ Ilaga",
+              "action": "land"
+            }
+          ]
+        }
+      ],
+      "map": {
+        "routes": [
+          {
+            "name": "Timika→Wamena (Cessna)",
+            "coords": [
+              [
+                136.887,
+                -4.528
+              ],
+              [
+                137.8,
+                -4.2
+              ],
+              [
+                138.952,
+                -4.076
+              ]
+            ],
+            "color": "#38bdf8",
+            "width": 2
+          },
+          {
+            "name": "Timika→Ilaga (EC725)",
+            "coords": [
+              [
+                136.887,
+                -4.528
+              ],
+              [
+                137.4,
+                -4.05
+              ],
+              [
+                137.62,
+                -3.977
+              ]
+            ],
+            "color": "#ff9900",
+            "width": 3
+          },
+          {
+            "name": "Timika→Oksibil (Cessna)",
+            "coords": [
+              [
+                136.887,
+                -4.528
+              ],
+              [
+                139.0,
+                -4.6
+              ],
+              [
+                140.629,
+                -4.906
+              ]
+            ],
+            "color": "#a78bfa",
+            "width": 2
+          }
+        ],
+        "symbols": [
+          {
+            "name": "Base Timika",
+            "coords": [
+              136.887,
+              -4.528
+            ],
+            "sidc": "SFGPUH-----",
+            "color": "#4ade80"
+          },
+          {
+            "name": "LZ Wamena",
+            "coords": [
+              138.952,
+              -4.076
+            ],
+            "sidc": "SFAPMFT----",
+            "color": "#38bdf8"
+          },
+          {
+            "name": "LZ Ilaga",
+            "coords": [
+              137.62,
+              -3.977
+            ],
+            "sidc": "SFAPMFT----",
+            "color": "#ff9900"
+          },
+          {
+            "name": "LZ Oksibil",
+            "coords": [
+              140.629,
+              -4.906
+            ],
+            "sidc": "SFAPMFT----",
+            "color": "#a78bfa"
+          }
+        ],
+        "areas": [
+          {
+            "name": "AO Papua",
+            "coords": [
+              [
+                136.5,
+                -2.5
+              ],
+              [
+                141.0,
+                -2.5
+              ],
+              [
+                141.0,
+                -5.5
+              ],
+              [
+                136.5,
+                -5.5
+              ]
+            ],
+            "color": "#4ade80",
+            "opacity": 0.08
+          }
+        ]
+      },
+      "simulation": {
+        "id": "SIM-003",
+        "theater": "Papua Highland",
+        "duration_s": 200,
+        "aoi": {
+          "center": [
+            138.952,
+            -4.097
+          ],
+          "zoom": 7,
+          "pitch": 50,
+          "bearing": 20
+        },
+        "units": [
+          {
+            "id": "u1",
+            "cs": "CES-1",
+            "type": "ally",
+            "unit": "transport",
+            "color": "#38bdf8",
+            "path": [
+              {
+                "t": 0,
+                "lng": 136.887,
+                "lat": -4.528,
+                "alt": 500,
+                "spd": 0,
+                "act": "takeoff"
+              },
+              {
+                "t": 40,
+                "lng": 137.8,
+                "lat": -4.2,
+                "alt": 12000,
+                "spd": 280,
+                "act": "cruise"
+              },
+              {
+                "t": 100,
+                "lng": 138.952,
+                "lat": -4.076,
+                "alt": 5435,
+                "spd": 120,
+                "act": "land"
+              }
+            ]
+          },
+          {
+            "id": "u2",
+            "cs": "CAR-1",
+            "type": "ally",
+            "unit": "helicopter",
+            "color": "#ff9900",
+            "path": [
+              {
+                "t": 10,
+                "lng": 136.887,
+                "lat": -4.528,
+                "alt": 200,
+                "spd": 0,
+                "act": "hover"
+              },
+              {
+                "t": 50,
+                "lng": 137.4,
+                "lat": -4.05,
+                "alt": 8500,
+                "spd": 200,
+                "act": "cruise"
+              },
+              {
+                "t": 90,
+                "lng": 137.62,
+                "lat": -3.977,
+                "alt": 7989,
+                "spd": 0,
+                "act": "land"
+              }
+            ]
+          },
+          {
+            "id": "u3",
+            "cs": "CES-2",
+            "type": "ally",
+            "unit": "transport",
+            "color": "#a78bfa",
+            "path": [
+              {
+                "t": 5,
+                "lng": 136.887,
+                "lat": -4.528,
+                "alt": 500,
+                "spd": 0,
+                "act": "takeoff"
+              },
+              {
+                "t": 50,
+                "lng": 139.0,
+                "lat": -4.6,
+                "alt": 10000,
+                "spd": 260,
+                "act": "cruise"
+              },
+              {
+                "t": 120,
+                "lng": 140.629,
+                "lat": -4.906,
+                "alt": 4315,
+                "spd": 110,
+                "act": "land"
+              }
+            ]
+          }
+        ],
+        "events": [
+          {
+            "t": 0,
+            "type": "phase",
+            "label": "LAUNCH"
+          },
+          {
+            "t": 10,
+            "type": "alert",
+            "label": "CES-1→Wamena, CAR-1→Ilaga, CES-2→Oksibil"
+          },
+          {
+            "t": 90,
+            "type": "objective",
+            "label": "CAR-1 LZ Ilaga",
+            "unit": "u2"
+          },
+          {
+            "t": 92,
+            "type": "cargo_unload",
+            "label": "Offload cargo at LZ",
+            "unit": "u2"
+          },
+          {
+            "t": 94,
+            "type": "pax_disembark",
+            "label": "Troops disembark",
+            "unit": "u2"
+          },
+          {
+            "t": 100,
+            "type": "objective",
+            "label": "CES-1 LZ Wamena",
+            "unit": "u1"
+          },
+          {
+            "t": 102,
+            "type": "cargo_unload",
+            "label": "Offload cargo at LZ",
+            "unit": "u1"
+          },
+          {
+            "t": 104,
+            "type": "pax_disembark",
+            "label": "Troops disembark",
+            "unit": "u1"
+          },
+          {
+            "t": 120,
+            "type": "objective",
+            "label": "CES-2 LZ Oksibil",
+            "unit": "u3"
+          },
+          {
+            "t": 122,
+            "type": "cargo_unload",
+            "label": "Offload cargo at LZ",
+            "unit": "u3"
+          },
+          {
+            "t": 124,
+            "type": "pax_disembark",
+            "label": "Troops disembark",
+            "unit": "u3"
+          }
+        ],
+        "sim_phases": [
+          {
+            "name": "Launch",
+            "start": 0,
+            "end": 50
+          },
+          {
+            "name": "Transit",
+            "start": 50,
+            "end": 150
+          },
+          {
+            "name": "Landing",
+            "start": 150,
+            "end": 200
+          }
+        ],
+        "event_types": [
+          "phase",
+          "alert",
+          "objective",
+          "cargo_load",
+          "cargo_unload",
+          "pax_embark",
+          "pax_disembark",
+          "refuel",
+          "weather_hold",
+          "contingency_reroute",
+          "runway_unavailable"
+        ]
+      }
+    },
+    {
+      "mission_identity": {
+        "operation_name": "OP LOGISTIK PAPUA — BALANCED",
+        "coa_id": "COA-PAPUA-004",
+        "rank": 4,
+        "status": "OPTIMIZED",
+        "label": "Seimbang",
+        "description": "C-130 Wamena + Cessna Oksibil + EC725 Ilaga. 3 hari.",
+        "coa_category": "HUB_RELAY_DELIVERY"
+      },
+      "operational_details": {
+        "commander": "Komandan Satgas Udara (Ops Pangan Papua)",
+        "comms": {
+          "primary": "UHF/VHF Ch-1 Satgas",
+          "alternate": "SATCOM",
+          "contingency": "HF Radio",
+          "emergency": "121.5 MHz"
+        },
+        "roe": "Non-Combatant / Logistics Support"
+      },
+      "objectives": {
+        "primary": "Distribusi 38T cargo + 50 troops dengan keseimbangan waktu, biaya, dan risiko",
+        "secondary": [
+          "Distribusi beban kerja merata antar tipe aset"
+        ],
+        "constraints": [
+          "Jendela cuaca 06.00-11.00 WIT",
+          "Cessna tidak ke Ilaga"
+        ]
+      },
+      "scoring": {
+        "aggregate": 82,
+        "confidence": "MEDIUM",
+        "quality_gate": true,
+        "breakdown": {
+          "delivery_efficiency": 24.0,
+          "safety": 20.0,
+          "temporal": 16.0,
+          "fuel_efficiency": 14.0,
+          "environmental": 8.0
+        }
+      },
+      "risk": {
+        "threat_level": "MEDIUM",
+        "primary_strategy": "Diversifikasi aset — jika satu tipe down, dua lainnya lanjut",
+        "contingency": "C-130 non-op → redistribusi Wamena ke EC725 (3 hari tambahan)",
+        "triggers": [
+          {
+            "if": "C-130 maintenance conflict",
+            "then": "EC725 take over Wamena sorties",
+            "evidence": [
+              "C-130 next mx 2026-04-15"
+            ]
+          },
+          {
+            "if": "Cessna crosswind > 15kt Oksibil",
+            "then": "Hold until wind subsides",
+            "evidence": [
+              "Cessna max xwind limit"
+            ]
+          }
+        ]
+      },
+      "strategic_summary": [
+        "Misi GO. Tiga tipe aset bekerja paralel: C-130 bulk ke Wamena, EC725 ke Ilaga, Cessna ke Oksibil. Tidak ada single point of failure.",
+        "SIGINT LOW. Tiga profil terbang berbeda (heavy/rotary/turboprop) menyulitkan pattern analysis. Jadwal tersebar mengurangi predictability.",
+        "Fleet diversifikasi: C-130 (svc 95%), EC725 (svc 98%), Cessna (svc 92%). Kru senior di C-130 & EC725, kru menengah di Cessna."
+      ],
+      "analysis": {
+        "strengths": [
+          "Tiga tipe aset — high redundancy",
+          "Keseimbangan waktu (3 hari) vs biaya vs keselamatan",
+          "Workload terdistribusi — fatigue management baik"
+        ],
+        "weaknesses": [
+          "Koordinasi 3 tipe aset lebih kompleks",
+          "Cessna payload kecil (1T/sortie) memperlambat Oksibil",
+          "3 hari masih cukup lambat untuk krisis akut"
+        ],
+        "terrain": [
+          "WAJW: 2.175m aspal — C-130 OK",
+          "WAYL: 920m gravel, 7.923 ft — EC725 only",
+          "WABP: 1.200m gravel, 4.315 ft — Cessna STOL OK"
+        ],
+        "environment": {
+          "per_dest": [
+            {
+              "icao": "WAJW",
+              "vis_km": 8,
+              "wind_kt": 5,
+              "ceiling_ft": 15000,
+              "rmk": "CAVOK"
+            },
+            {
+              "icao": "WAYL",
+              "vis_km": 5,
+              "wind_kt": 8,
+              "ceiling_ft": 8000,
+              "rmk": "Kabut 11.00"
+            },
+            {
+              "icao": "WABP",
+              "vis_km": 7,
+              "wind_kt": 6,
+              "ceiling_ft": 12000,
+              "rmk": "Clear"
+            }
+          ]
+        },
+        "aoi": {
+          "center": [
+            -4.097,
+            138.952
+          ],
+          "radius_km": 250,
+          "bbox": [
+            136.5,
+            -5.5,
+            141.0,
+            -2.5
+          ]
+        },
+        "key_features": [
+          {
+            "name": "Bandara Wamena",
+            "type": "airport",
+            "coords": [
+              138.952,
+              -4.076
+            ],
+            "note": "C-130 hub"
+          },
+          {
+            "name": "LZ Ilaga",
+            "type": "airstrip",
+            "coords": [
+              137.62,
+              -3.977
+            ],
+            "note": "EC725 only"
+          },
+          {
+            "name": "LZ Oksibil",
+            "type": "airstrip",
+            "coords": [
+              140.629,
+              -4.906
+            ],
+            "note": "Cessna STOL"
+          }
+        ],
+        "threat": {
+          "level": "MEDIUM",
+          "score": 32,
+          "factors": [
+            {
+              "name": "coordination_complexity",
+              "w": 0.4,
+              "desc": "3 tipe aset = koordinasi tinggi"
+            },
+            {
+              "name": "weather_fog",
+              "w": 0.4,
+              "desc": "Kabut Ilaga"
+            },
+            {
+              "name": "cessna_xwind",
+              "w": 0.2,
+              "desc": "Limit crosswind Cessna"
+            }
+          ]
+        },
+        "recommended_approach": "Tri-Fleet Balanced Distribution"
+      },
+      "technical": {
+        "status": "VALID",
+        "mass_balance": [
+          {
+            "leg": "WAJJ→WAJW",
+            "ac": "C-130",
+            "oew": 36400,
+            "crew": 405,
+            "fuel": 20000,
+            "cargo": 10000,
+            "troops": 1500,
+            "gw": 68305,
+            "mtow": 70300,
+            "margin_pct": 2.8,
+            "status": "VALID"
+          },
+          {
+            "leg": "WABT→WAYL",
+            "ac": "EC725",
+            "oew": 5300,
+            "crew": 320,
+            "fuel": 2400,
+            "cargo": 2000,
+            "troops": 300,
+            "gw": 10320,
+            "mtow": 11000,
+            "margin_pct": 6.2,
+            "status": "VALID"
+          },
+          {
+            "leg": "WABT→WABP",
+            "ac": "C208B",
+            "oew": 2145,
+            "crew": 165,
+            "fuel": 700,
+            "cargo": 800,
+            "troops": 100,
+            "gw": 3910,
+            "mtow": 3969,
+            "margin_pct": 1.5,
+            "status": "VALID"
+          }
+        ],
+        "performance": [
+          {
+            "check": "takeoff_vs_runway",
+            "ac": "C-130",
+            "dest": "WAJW",
+            "req": 1500,
+            "avail": 2175,
+            "margin_pct": 31,
+            "s": "VALID"
+          },
+          {
+            "check": "oge_ceiling",
+            "ac": "EC725",
+            "dest": "WAYL",
+            "req_ft": 7923,
+            "avail_ft": 9500,
+            "margin_ft": 1577,
+            "s": "VALID"
+          },
+          {
+            "check": "takeoff_vs_runway",
+            "ac": "C208B",
+            "dest": "WABP",
+            "req": 800,
+            "avail": 1200,
+            "margin_pct": 33,
+            "s": "VALID"
+          }
+        ],
+        "fuel": {
+          "trip_kg": 14000,
+          "reserve_kg": 3600,
+          "reserve_min": 45,
+          "compliance": "VALID",
+          "per_phase": [
+            {
+              "phase": "climb",
+              "kg": 3200
+            },
+            {
+              "phase": "cruise",
+              "kg": 8400
+            },
+            {
+              "phase": "descent",
+              "kg": 1400
+            },
+            {
+              "phase": "reserve",
+              "kg": 3600
+            }
+          ]
+        },
+        "hard_gates": {
+          "total": 8,
+          "pass": 8,
+          "fail": 0,
+          "checks": [
+            "MTOW",
+            "Runway Length",
+            "Service Ceiling",
+            "OGE Ceiling",
+            "Crosswind",
+            "Density Alt",
+            "Fuel Endurance",
+            "Climb Gradient"
+          ]
+        },
+        "feasibility_verdict": {
+          "status": "FEASIBLE",
+          "hard_gate_pass": true,
+          "notes": "Semua 8 hard gate checks lulus. Misi layak secara teknis."
+        }
+      },
+      "tasking": {
+        "assets": [
+          {
+            "unit_id": "FW-C130-01",
+            "ac": "C-130 Hercules",
+            "reg": "A-1301",
+            "base": "WAJJ",
+            "co_located": true,
+            "ferry": false,
+            "task": "Wamena — 20T + 30 troops (2 sorties)",
+            "per_sortie": {
+              "cargo_kg": 10000,
+              "troops": 15,
+              "total_kg": 11500
+            }
+          },
+          {
+            "unit_id": "RW-CAR-05",
+            "ac": "EC725 Caracal",
+            "reg": "HA-5201",
+            "base": "WABT",
+            "co_located": true,
+            "ferry": false,
+            "task": "Ilaga — 10T + 10 troops (5 sorties)",
+            "per_sortie": {
+              "cargo_kg": 2000,
+              "troops": 2,
+              "total_kg": 2200
+            }
+          },
+          {
+            "unit_id": "FW-C208-01",
+            "ac": "Cessna 208B",
+            "reg": "PK-SZY",
+            "base": "WABT",
+            "co_located": true,
+            "ferry": false,
+            "task": "Oksibil — 8T + 10 troops (11 sorties)",
+            "per_sortie": {
+              "cargo_kg": 800,
+              "troops": 1,
+              "total_kg": 900
+            }
+          }
+        ],
+        "health": [
+          {
+            "unit": "FW-C130-01",
+            "status": "MISSION_READY",
+            "hours": 12450,
+            "next_mx": "2026-04-15",
+            "svc_score": 95
+          },
+          {
+            "unit": "RW-CAR-05",
+            "status": "MISSION_READY",
+            "hours": 3200,
+            "next_mx": "2026-04-10",
+            "svc_score": 98
+          },
+          {
+            "unit": "FW-C208-01",
+            "status": "MISSION_READY",
+            "hours": 8900,
+            "next_mx": "2026-04-05",
+            "svc_score": 92
+          }
+        ],
+        "crew": [
+          {
+            "cs": "HERC-PIC",
+            "role": "pilot",
+            "name": "Kapt. Arif Setiawan",
+            "unit": "FW-C130-01",
+            "exp_yr": 18,
+            "certs": [
+              "C-130 TR",
+              "Mountain Ops"
+            ],
+            "weight_kg": 85,
+            "as": "OEW"
+          },
+          {
+            "cs": "HERC-CP",
+            "role": "co_pilot",
+            "name": "Lettu. Budi Prasetyo",
+            "unit": "FW-C130-01",
+            "exp_yr": 7,
+            "certs": [
+              "C-130 TR"
+            ],
+            "weight_kg": 80,
+            "as": "OEW"
+          },
+          {
+            "cs": "HERC-NAV",
+            "role": "navigator",
+            "name": "Lettu. Fajar Nugroho",
+            "unit": "FW-C130-01",
+            "exp_yr": 9,
+            "certs": [
+              "C-130 Nav"
+            ],
+            "weight_kg": 78,
+            "as": "OEW"
+          },
+          {
+            "cs": "HERC-ENG",
+            "role": "engineer",
+            "name": "Serma. Hendra Wijaya",
+            "unit": "FW-C130-01",
+            "exp_yr": 16,
+            "certs": [
+              "C-130 Powerplant"
+            ],
+            "weight_kg": 82,
+            "as": "OEW"
+          },
+          {
+            "cs": "HERC-LM",
+            "role": "loadmaster",
+            "name": "Serka. Agus Priyanto",
+            "unit": "FW-C130-01",
+            "exp_yr": 14,
+            "certs": [
+              "463L",
+              "Airdrop"
+            ],
+            "weight_kg": 80,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR-PIC",
+            "role": "pilot",
+            "name": "Mayor Deni Kurniawan",
+            "unit": "RW-CAR-05",
+            "exp_yr": 21,
+            "certs": [
+              "EC725 TR",
+              "Mountain Rotary",
+              "NVG"
+            ],
+            "weight_kg": 83,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR-CP",
+            "role": "co_pilot",
+            "name": "Kapt. Rizky Ananda",
+            "unit": "RW-CAR-05",
+            "exp_yr": 12,
+            "certs": [
+              "EC725 TR"
+            ],
+            "weight_kg": 79,
+            "as": "OEW"
+          },
+          {
+            "cs": "CAR-ENG",
+            "role": "engineer",
+            "name": "Serka. Rudi Hartanto",
+            "unit": "RW-CAR-05",
+            "exp_yr": 14,
+            "certs": [
+              "EC725 Airframe"
+            ],
+            "weight_kg": 81,
+            "as": "OEW"
+          },
+          {
+            "cs": "CES-PIC",
+            "role": "pilot",
+            "name": "Kapt. Surya Dharma",
+            "unit": "FW-C208-01",
+            "exp_yr": 10,
+            "certs": [
+              "C208B TR",
+              "STOL Ops"
+            ],
+            "weight_kg": 80,
+            "as": "OEW"
+          },
+          {
+            "cs": "CES-CP",
+            "role": "co_pilot",
+            "name": "Letda. Bayu Anggara",
+            "unit": "FW-C208-01",
+            "exp_yr": 4,
+            "certs": [
+              "C208B TR"
+            ],
+            "weight_kg": 75,
+            "as": "OEW"
+          }
+        ],
+        "pax": [
+          {
+            "id": "PAX-WMN",
+            "dest": "WAJW",
+            "cat": "combat_troops",
+            "count": 30,
+            "weight_ea": 100,
+            "total_kg": 3000,
+            "unit": "FW-C130-01",
+            "as": "PAYLOAD"
+          },
+          {
+            "id": "PAX-ILG",
+            "dest": "WAYL",
+            "cat": "combat_troops",
+            "count": 10,
+            "weight_ea": 100,
+            "total_kg": 1000,
+            "unit": "RW-CAR-05",
+            "as": "PAYLOAD"
+          },
+          {
+            "id": "PAX-OKS",
+            "dest": "WABP",
+            "cat": "combat_troops",
+            "count": 10,
+            "weight_ea": 100,
+            "total_kg": 1000,
+            "unit": "FW-C208-01",
+            "as": "PAYLOAD"
+          }
+        ],
+        "modules": [
+          {
+            "id": "MOD-001",
+            "name": "463L Cargo Pallets",
+            "unit": "FW-C130-01"
+          },
+          {
+            "id": "MOD-002",
+            "name": "Sling Load System",
+            "unit": "RW-CAR-05"
+          },
+          {
+            "id": "MOD-005",
+            "name": "Cargo Pod (Standard)",
+            "unit": "FW-C208-01"
+          }
+        ],
+        "transport_ops": [
+          {
+            "unit_id": "FW-C130-01",
+            "transport_mode": "AIR",
+            "loading_method": "463L_PALLET",
+            "load_time_min": 45,
+            "unload_time_min": 30,
+            "turnaround_min": 90,
+            "refuel_time_min": 45
+          },
+          {
+            "unit_id": "RW-CAR-05",
+            "transport_mode": "AIR",
+            "loading_method": "SLING_LOAD",
+            "load_time_min": 25,
+            "unload_time_min": 15,
+            "turnaround_min": 50,
+            "refuel_time_min": 20
+          },
+          {
+            "unit_id": "FW-C208-01",
+            "transport_mode": "AIR",
+            "loading_method": "MANUAL_BULK",
+            "load_time_min": 20,
+            "unload_time_min": 15,
+            "turnaround_min": 40,
+            "refuel_time_min": 15
+          }
+        ]
+      },
+      "phases": [
+        {
+          "id": "P1",
+          "name": "Wamena Airbridge",
+          "status": "PENDING",
+          "desc": "2x C-130 Sentani→Wamena"
+        },
+        {
+          "id": "P2",
+          "name": "Ilaga Heli Drops",
+          "status": "PENDING",
+          "desc": "5x EC725 Timika→Ilaga"
+        },
+        {
+          "id": "P3",
+          "name": "Oksibil Cessna Shuttle",
+          "status": "PENDING",
+          "desc": "11x Cessna Timika→Oksibil"
+        }
+      ],
+      "timeline": {
+        "duration_hours": 33,
+        "operational_days": 3,
+        "milestones": [
+          {
+            "t": "D+0 06:00",
+            "event": "C-130 Sortie 1 → Wamena + EC725 → Ilaga + Cessna → Oksibil"
+          },
+          {
+            "t": "D+0 10:00",
+            "event": "C-130 Sortie 2 — Wamena FULL"
+          },
+          {
+            "t": "D+0 10:30",
+            "event": "WX HOLD Ilaga"
+          },
+          {
+            "t": "D+1 06:00",
+            "event": "Resume EC725 + Cessna"
+          },
+          {
+            "t": "D+2 10:00",
+            "event": "ALL DELIVERED — MISSION COMPLETE"
+          }
+        ]
+      },
+      "routes": [
+        {
+          "id": "R1",
+          "from": "WAJJ",
+          "to": "WAJW",
+          "ac": "C-130",
+          "dist_nm": 134,
+          "dur_min": 55,
+          "difficulty": "MODERATE",
+          "dep_window": {
+            "start": "06:00",
+            "end": "09:00",
+            "confidence": "HIGH"
+          },
+          "pilot_brief": [
+            "Terrain rising post-TOC — FL150 min",
+            "Crosswind 5kt from S"
+          ],
+          "waypoints": [
+            {
+              "id": "WP01",
+              "lat": -2.576,
+              "lng": 140.516,
+              "alt_ft": 2000,
+              "label": "T/O Sentani",
+              "action": "takeoff"
+            },
+            {
+              "id": "WP02",
+              "lat": -3.3,
+              "lng": 139.8,
+              "alt_ft": 15000,
+              "label": "TOC",
+              "action": "cruise"
+            },
+            {
+              "id": "WP03",
+              "lat": -4.076,
+              "lng": 138.952,
+              "alt_ft": 5435,
+              "label": "LZ Wamena",
+              "action": "land"
+            }
+          ]
+        },
+        {
+          "id": "R2",
+          "from": "WABT",
+          "to": "WAYL",
+          "ac": "EC725",
+          "dist_nm": 65,
+          "dur_min": 35,
+          "difficulty": "HARD",
+          "dep_window": {
+            "start": "06:00",
+            "end": "08:30",
+            "confidence": "HIGH"
+          },
+          "pilot_brief": [
+            "Valley approach — visual ref mandatory",
+            "FOD risk gravel"
+          ],
+          "waypoints": [
+            {
+              "id": "WP04",
+              "lat": -4.528,
+              "lng": 136.887,
+              "alt_ft": 1000,
+              "label": "T/O Timika",
+              "action": "takeoff"
+            },
+            {
+              "id": "WP05",
+              "lat": -4.05,
+              "lng": 137.4,
+              "alt_ft": 8500,
+              "label": "Ridge Pass",
+              "action": "cruise"
+            },
+            {
+              "id": "WP06",
+              "lat": -3.977,
+              "lng": 137.62,
+              "alt_ft": 7989,
+              "label": "LZ Ilaga",
+              "action": "land"
+            }
+          ]
+        },
+        {
+          "id": "R3",
+          "from": "WABT",
+          "to": "WABP",
+          "ac": "C208B",
+          "dist_nm": 210,
+          "dur_min": 75,
+          "difficulty": "MODERATE",
+          "dep_window": {
+            "start": "06:00",
+            "end": "09:00",
+            "confidence": "HIGH"
+          },
+          "pilot_brief": [
+            "Longest Cessna leg — fuel management",
+            "Oksibil approach from south"
+          ],
+          "waypoints": [
+            {
+              "id": "WP07",
+              "lat": -4.528,
+              "lng": 136.887,
+              "alt_ft": 500,
+              "label": "T/O Timika",
+              "action": "takeoff"
+            },
+            {
+              "id": "WP08",
+              "lat": -4.6,
+              "lng": 139.0,
+              "alt_ft": 10000,
+              "label": "TOC South",
+              "action": "cruise"
+            },
+            {
+              "id": "WP09",
+              "lat": -4.906,
+              "lng": 140.629,
+              "alt_ft": 4315,
+              "label": "LZ Oksibil",
+              "action": "land"
+            }
+          ]
+        }
+      ],
+      "map": {
+        "routes": [
+          {
+            "name": "Sentani→Wamena",
+            "coords": [
+              [
+                140.516,
+                -2.576
+              ],
+              [
+                139.8,
+                -3.3
+              ],
+              [
+                138.952,
+                -4.076
+              ]
+            ],
+            "color": "#00ffff",
+            "width": 4
+          },
+          {
+            "name": "Timika→Ilaga",
+            "coords": [
+              [
+                136.887,
+                -4.528
+              ],
+              [
+                137.4,
+                -4.05
+              ],
+              [
+                137.62,
+                -3.977
+              ]
+            ],
+            "color": "#ff9900",
+            "width": 3
+          },
+          {
+            "name": "Timika→Oksibil",
+            "coords": [
+              [
+                136.887,
+                -4.528
+              ],
+              [
+                139.0,
+                -4.6
+              ],
+              [
+                140.629,
+                -4.906
+              ]
+            ],
+            "color": "#a78bfa",
+            "width": 2
+          }
+        ],
+        "symbols": [
+          {
+            "name": "Base Sentani",
+            "coords": [
+              140.516,
+              -2.576
+            ],
+            "sidc": "SFGPUH-----",
+            "color": "#4ade80"
+          },
+          {
+            "name": "Base Timika",
+            "coords": [
+              136.887,
+              -4.528
+            ],
+            "sidc": "SFGPUH-----",
+            "color": "#4ade80"
+          },
+          {
+            "name": "LZ Wamena",
+            "coords": [
+              138.952,
+              -4.076
+            ],
+            "sidc": "SFAPMFT----",
+            "color": "#00bfff"
+          },
+          {
+            "name": "LZ Ilaga",
+            "coords": [
+              137.62,
+              -3.977
+            ],
+            "sidc": "SFAPMFT----",
+            "color": "#ff9900"
+          },
+          {
+            "name": "LZ Oksibil",
+            "coords": [
+              140.629,
+              -4.906
+            ],
+            "sidc": "SFAPMFT----",
+            "color": "#a78bfa"
+          }
+        ],
+        "areas": [
+          {
+            "name": "AO Papua",
+            "coords": [
+              [
+                136.5,
+                -2.5
+              ],
+              [
+                141.0,
+                -2.5
+              ],
+              [
+                141.0,
+                -5.5
+              ],
+              [
+                136.5,
+                -5.5
+              ]
+            ],
+            "color": "#4ade80",
+            "opacity": 0.08
+          }
+        ]
+      },
+      "simulation": {
+        "id": "SIM-004",
+        "theater": "Papua Highland",
+        "duration_s": 200,
+        "aoi": {
+          "center": [
+            138.952,
+            -4.097
+          ],
+          "zoom": 7,
+          "pitch": 50,
+          "bearing": 25
+        },
+        "units": [
+          {
+            "id": "u1",
+            "cs": "HERC-1",
+            "type": "ally",
+            "unit": "transport",
+            "color": "#00bfff",
+            "path": [
+              {
+                "t": 0,
+                "lng": 140.516,
+                "lat": -2.576,
+                "alt": 300,
+                "spd": 0,
+                "act": "takeoff"
+              },
+              {
+                "t": 30,
+                "lng": 139.8,
+                "lat": -3.3,
+                "alt": 15000,
+                "spd": 480,
+                "act": "cruise"
+              },
+              {
+                "t": 80,
+                "lng": 138.952,
+                "lat": -4.076,
+                "alt": 5435,
+                "spd": 200,
+                "act": "land"
+              }
+            ]
+          },
+          {
+            "id": "u2",
+            "cs": "CAR-1",
+            "type": "ally",
+            "unit": "helicopter",
+            "color": "#ff9900",
+            "path": [
+              {
+                "t": 10,
+                "lng": 136.887,
+                "lat": -4.528,
+                "alt": 200,
+                "spd": 0,
+                "act": "hover"
+              },
+              {
+                "t": 50,
+                "lng": 137.4,
+                "lat": -4.05,
+                "alt": 8500,
+                "spd": 200,
+                "act": "cruise"
+              },
+              {
+                "t": 90,
+                "lng": 137.62,
+                "lat": -3.977,
+                "alt": 7989,
+                "spd": 0,
+                "act": "land"
+              }
+            ]
+          },
+          {
+            "id": "u3",
+            "cs": "CES-1",
+            "type": "ally",
+            "unit": "transport",
+            "color": "#a78bfa",
+            "path": [
+              {
+                "t": 5,
+                "lng": 136.887,
+                "lat": -4.528,
+                "alt": 500,
+                "spd": 0,
+                "act": "takeoff"
+              },
+              {
+                "t": 55,
+                "lng": 139.0,
+                "lat": -4.6,
+                "alt": 10000,
+                "spd": 260,
+                "act": "cruise"
+              },
+              {
+                "t": 120,
+                "lng": 140.629,
+                "lat": -4.906,
+                "alt": 4315,
+                "spd": 110,
+                "act": "land"
+              }
+            ]
+          }
+        ],
+        "events": [
+          {
+            "t": 0,
+            "type": "phase",
+            "label": "LAUNCH"
+          },
+          {
+            "t": 10,
+            "type": "alert",
+            "label": "All 3 units airborne"
+          },
+          {
+            "t": 80,
+            "type": "objective",
+            "label": "HERC-1 LZ Wamena",
+            "unit": "u1"
+          },
+          {
+            "t": 82,
+            "type": "cargo_unload",
+            "label": "Offload cargo at LZ",
+            "unit": "u1"
+          },
+          {
+            "t": 84,
+            "type": "pax_disembark",
+            "label": "Troops disembark",
+            "unit": "u1"
+          },
+          {
+            "t": 90,
+            "type": "objective",
+            "label": "CAR-1 LZ Ilaga",
+            "unit": "u2"
+          },
+          {
+            "t": 92,
+            "type": "cargo_unload",
+            "label": "Offload cargo at LZ",
+            "unit": "u2"
+          },
+          {
+            "t": 94,
+            "type": "pax_disembark",
+            "label": "Troops disembark",
+            "unit": "u2"
+          },
+          {
+            "t": 120,
+            "type": "objective",
+            "label": "CES-1 LZ Oksibil",
+            "unit": "u3"
+          },
+          {
+            "t": 122,
+            "type": "cargo_unload",
+            "label": "Offload cargo at LZ",
+            "unit": "u3"
+          },
+          {
+            "t": 124,
+            "type": "pax_disembark",
+            "label": "Troops disembark",
+            "unit": "u3"
+          }
+        ],
+        "sim_phases": [
+          {
+            "name": "Launch",
+            "start": 0,
+            "end": 50
+          },
+          {
+            "name": "Transit",
+            "start": 50,
+            "end": 150
+          },
+          {
+            "name": "Landing",
+            "start": 150,
+            "end": 200
+          }
+        ],
+        "event_types": [
+          "phase",
+          "alert",
+          "objective",
+          "cargo_load",
+          "cargo_unload",
+          "pax_embark",
+          "pax_disembark",
+          "refuel",
+          "weather_hold",
+          "contingency_reroute",
+          "runway_unavailable"
+        ]
+      }
+    },
+    {
+      "mission_identity": {
+        "operation_name": "OP LOGISTIK PAPUA — BUDGET",
+        "coa_id": "COA-PAPUA-005",
+        "rank": 5,
+        "status": "NO_GO",
+        "label": "Ditolak",
+        "description": "Turboprop kecil, 2 minggu — terlalu lambat untuk krisis.",
+        "icon": "❌",
+        "coa_category": "REJECTED"
+      },
+      "scoring": {
+        "aggregate": 65,
+        "confidence": "HIGH",
+        "quality_gate": false,
+        "rejection": "Skor 65 < threshold 80. Durasi 2 minggu terlalu lambat.",
+        "breakdown": {
+          "delivery_efficiency": 10,
+          "safety": 25,
+          "temporal": 5,
+          "fuel_efficiency": 15,
+          "environmental": 10
+        }
+      },
+      "analysis": {
+        "strengths": [
+          "Biaya terendah"
+        ],
+        "weaknesses": [
+          "Tidak memenuhi tenggat darurat",
+          "Risiko kemanusiaan tinggi"
+        ],
+        "recommended_approach": "DITOLAK — risiko kemanusiaan"
+      },
+      "phases": [
+        {
+          "id": "P1",
+          "name": "CANCELLED",
+          "status": "CANCELLED",
+          "desc": "Dibatalkan Quality Gate"
+        }
+      ],
+      "simulation": null
+    }
+  ],
+  "planner_mode": "aerobridge_transport",
+  "transport_mode": "AIR",
+  "mission_subtype": "AIR_CARGO"
+}

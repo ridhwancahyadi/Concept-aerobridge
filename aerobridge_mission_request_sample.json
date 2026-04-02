@@ -1,0 +1,232 @@
+{
+  "request_id": "REQ-2026-03-30-001",
+  "timestamp": "2026-03-30T06:00:00+09:00",
+  "input_source": "MANUAL",
+  "planner_mode": "aerobridge_transport",
+  "transport_mode": "AIR",
+  "mission_subtype": "AIR_CARGO",
+
+  "user_input": {
+    "prompt_raw": "Kirim 38 Ton bantuan pangan dan 50 personel militer ke Wamena (20T+30pax), Ilaga (10T+10pax), dan Oksibil (8T+10pax) dari Sentani besok pagi. Prioritas kecepatan, misi non-combatant.",
+    "mission_intent": {
+      "objective_category": "LOGISTICS",
+      "objective_primary": "Distribusi 38 Ton bantuan pangan dan 50 personel militer ke 3 titik di Papua Pegunungan",
+      "objective_secondary": ["Meminimalkan jumlah hari operasi"],
+      "optimization_strategy": "SPEED",
+      "priority_level": "HIGH",
+      "date_requested": "2026-03-30",
+      "commander": "Komandan Satgas Udara (Ops Pangan Papua)",
+      "origin": "WAJJ",
+      "destinations": [
+        {
+          "icao": "WAJW",
+          "priority": "HIGH",
+          "logistics_kg": 20000,
+          "troops": { "count": 30, "category": "combat_troops", "std_weight_kg": 100 },
+          "loading_config": {
+            "method": "463L_PALLET",
+            "estimated_load_min": 45,
+            "estimated_unload_min": 30,
+            "ground_handling": "MILITARY_RAMP"
+          }
+        },
+        {
+          "icao": "WAYL",
+          "priority": "HIGH",
+          "logistics_kg": 10000,
+          "troops": { "count": 10, "category": "combat_troops", "std_weight_kg": 100 },
+          "loading_config": {
+            "method": "SLING_LOAD",
+            "estimated_load_min": 25,
+            "estimated_unload_min": 15,
+            "ground_handling": "FIELD_OPS"
+          }
+        },
+        {
+          "icao": "WABP",
+          "priority": "MEDIUM",
+          "logistics_kg": 8000,
+          "troops": { "count": 10, "category": "combat_troops", "std_weight_kg": 100 },
+          "loading_config": {
+            "method": "SLING_LOAD",
+            "estimated_load_min": 25,
+            "estimated_unload_min": 15,
+            "ground_handling": "FIELD_OPS"
+          }
+        }
+      ]
+    },
+    "policy": {
+      "sop_reference": null,
+      "roe": "Non-Combatant/Logistics Support",
+      "optimization": "SPEED",
+      "safety_margin": "STANDARD",
+      "constraints": ["Jendela operasi 06.00-11.00 WIT", "Keselamatan kru di atas efisiensi"]
+    }
+  },
+
+  "agent_context": {
+    "locations": [
+      { "icao": "WAJJ", "name": "Sentani", "coords": [-2.576667, 140.516389], "province": "Papua", "elevation_ft": 289, "runway_m": 3000, "surface": "ASPHALT", "heading_deg": 120, "port_type": "military_airbase", "access": { "runway": true, "helipad": true, "ramp": true } },
+      { "icao": "WAJW", "name": "Wamena", "coords": [-4.076389, 138.952778], "province": "Papua Pegunungan", "elevation_ft": 5085, "runway_m": 2175, "surface": "ASPHALT", "heading_deg": 150, "port_type": "civil_airport", "access": { "runway": true, "helipad": true, "ramp": true } },
+      { "icao": "WAYL", "name": "Ilaga", "coords": [-3.977222, 137.620278], "province": "Papua Tengah", "elevation_ft": 7923, "runway_m": 920, "surface": "GRAVEL", "heading_deg": 90, "port_type": "airstrip", "access": { "runway": true, "helipad": false, "ramp": false } },
+      { "icao": "WABP", "name": "Oksibil", "coords": [-4.906667, 140.629722], "province": "Papua Pegunungan", "elevation_ft": 4315, "runway_m": 1200, "surface": "GRAVEL", "heading_deg": 180, "port_type": "airstrip", "access": { "runway": true, "helipad": false, "ramp": false } }
+    ],
+
+    "available_assets": [
+      {
+        "unit_id": "FW-C130-01",
+        "aircraft_name": "C-130 Hercules",
+        "aircraft_type": "fixed_wing",
+        "transport_role": "heavy_lifter",
+        "fleet_category": "heavy_transport",
+        "base_icao": "WAJJ",
+        "base_name": "Lanud Silas Papare",
+        "quantity": 2,
+        "availability_status": "READY",
+        "fuel_available_kg": 15000,
+        "specs": {
+          "mtow_kg": 70300, "oew_kg": 36400, "max_payload_kg": 19000,
+          "service_ceiling_ft": 33000, "cruise_speed_kt": 300,
+          "range_nm": 2050, "min_runway_m": 1500
+        },
+        "health": {
+          "total_flight_hours": 12450,
+          "hours_since_last_inspection": 120,
+          "next_maintenance": "2026-04-15",
+          "serviceability_score": 95,
+          "logbook_alerts": [],
+          "recurring_issues": []
+        },
+        "crew_template": {
+          "min": 5, "max": 6,
+          "roles": ["pilot", "co_pilot", "navigator", "flight_engineer", "loadmaster", "loadmaster"]
+        },
+        "transport_config": {
+          "cargo_bay": { "length_m": 12.31, "width_m": 3.12, "height_m": 2.74 },
+          "cargo_system": "463L",
+          "max_pallet_count": 6,
+          "ramp_loading": true,
+          "airdrop_capable": true,
+          "refuel_time_min": 45
+        }
+      },
+      {
+        "unit_id": "RW-CAR-05",
+        "aircraft_name": "EC725 Caracal",
+        "aircraft_type": "rotary_wing",
+        "transport_role": "mountain_access",
+        "fleet_category": "medium_heavy_helicopter",
+        "base_icao": "WABT",
+        "base_name": "Lanud Yohanis Kapiyau",
+        "quantity": 2,
+        "availability_status": "READY",
+        "fuel_available_kg": 3000,
+        "specs": {
+          "mtow_kg": 11000, "oew_kg": 5300, "max_payload_kg": 4500,
+          "service_ceiling_ft": 20000, "oge_ceiling_ft": 9500,
+          "cruise_speed_kt": 140, "range_nm": 450
+        },
+        "health": {
+          "total_flight_hours": 3200,
+          "hours_since_last_inspection": 45,
+          "next_maintenance": "2026-04-10",
+          "serviceability_score": 98,
+          "logbook_alerts": ["Anti-icing system inspected — OK"],
+          "recurring_issues": []
+        },
+        "crew_template": {
+          "min": 3, "max": 4,
+          "roles": ["pilot", "co_pilot", "flight_engineer", "door_gunner"]
+        },
+        "transport_config": {
+          "cabin_pax_max": 29,
+          "cargo_hook_kg": 4750,
+          "sling_load": true,
+          "fast_rope": true,
+          "hoist": true,
+          "refuel_time_min": 20
+        }
+      },
+      {
+        "unit_id": "FW-C208-FLEET",
+        "aircraft_name": "Cessna 208B Caravan",
+        "aircraft_type": "fixed_wing",
+        "transport_role": "stol_feeder",
+        "fleet_category": "small_transport",
+        "base_icao": "WABT",
+        "base_name": "Lanud Yohanis Kapiyau",
+        "quantity": 8,
+        "availability_status": "READY",
+        "fuel_available_kg": 800,
+        "specs": {
+          "mtow_kg": 3969, "oew_kg": 2145, "max_payload_kg": 1500,
+          "service_ceiling_ft": 25000, "cruise_speed_kt": 175,
+          "range_nm": 900, "min_runway_m": 800
+        },
+        "health": {
+          "total_flight_hours": 8900,
+          "hours_since_last_inspection": 35,
+          "next_maintenance": "2026-04-05",
+          "serviceability_score": 92,
+          "logbook_alerts": [],
+          "recurring_issues": []
+        },
+        "crew_template": {
+          "min": 2, "max": 3,
+          "roles": ["pilot", "co_pilot", "loadmaster"]
+        },
+        "transport_config": {
+          "cabin_pax_max": 9,
+          "cargo_pod": true,
+          "belly_cargo_kg": 136,
+          "stol_capable": true,
+          "refuel_time_min": 15
+        }
+      }
+    ],
+
+    "available_crew": [
+      { "id": "PNL-001", "name": "Kapt. Arif Setiawan", "rank": "Kapten", "base": "WAJJ", "status": "READY", "role": "pilot", "certs": ["C-130 TR", "Mountain Ops"], "flight_hours": 5200, "papua_exp": true },
+      { "id": "PNL-002", "name": "Lettu. Budi Prasetyo", "rank": "Letnan Dua", "base": "WAJJ", "status": "READY", "role": "co_pilot", "certs": ["C-130 TR"], "flight_hours": 2100, "papua_exp": true },
+      { "id": "PNL-003", "name": "Lettu. Fajar Nugroho", "rank": "Letnan Dua", "base": "WAJJ", "status": "READY", "role": "navigator", "certs": ["C-130 Nav"], "flight_hours": 2800, "papua_exp": true },
+      { "id": "PNL-004", "name": "Serma. Hendra Wijaya", "rank": "Sersan Mayor", "base": "WAJJ", "status": "READY", "role": "flight_engineer", "certs": ["C-130 Powerplant"], "flight_hours": 4100, "papua_exp": true },
+      { "id": "PNL-005", "name": "Serka. Agus Priyanto", "rank": "Sersan Kepala", "base": "WAJJ", "status": "READY", "role": "loadmaster", "certs": ["463L Cargo", "Airdrop"], "flight_hours": 3200, "papua_exp": true },
+      { "id": "PNL-006", "name": "Mayor Deni Kurniawan", "rank": "Mayor", "base": "WABT", "status": "READY", "role": "pilot", "certs": ["EC725 TR", "Mountain Rotary", "NVG"], "flight_hours": 7800, "papua_exp": true },
+      { "id": "PNL-007", "name": "Kapt. Rizky Ananda", "rank": "Kapten", "base": "WABT", "status": "READY", "role": "co_pilot", "certs": ["EC725 TR"], "flight_hours": 3500, "papua_exp": true },
+      { "id": "PNL-008", "name": "Serka. Rudi Hartanto", "rank": "Sersan Kepala", "base": "WABT", "status": "READY", "role": "flight_engineer", "certs": ["EC725 Airframe"], "flight_hours": 3400, "papua_exp": true },
+      { "id": "PNL-009", "name": "Praka. Yusuf Maulana", "rank": "Prajurit Kepala", "base": "WABT", "status": "READY", "role": "door_gunner", "certs": ["Sling Load", "Fast Rope"], "flight_hours": 1200, "papua_exp": true }
+    ],
+
+    "intel_feeds": [
+      { "type": "OSINT", "summary": "Krisis pangan akut di 3 kabupaten pegunungan tengah Papua sejak 2 minggu", "threat": "LOW", "ts": "2026-03-28T08:00:00+07:00" },
+      { "type": "HUMINT", "summary": "Jalan darat Wamena terputus total akibat longsor", "threat": "LOW", "ts": "2026-03-27T14:00:00+07:00" },
+      { "type": "SIGINT", "summary": "Tidak ada aktivitas komunikasi mencurigakan di koridor Sentani-Wamena", "threat": "LOW", "ts": "2026-03-29T05:00:00+07:00" }
+    ],
+
+    "environment": {
+      "terrain": "Highland/Mountain",
+      "weather": { "oat_c": 18, "qnh_hpa": 1007, "wind_mps": 4.0, "visibility_km": 7.0 },
+      "per_location": [
+        { "icao": "WAJJ", "vis_km": 10, "wind_kt": 5, "ceiling_ft": 20000, "rmk": "CAVOK" },
+        { "icao": "WAJW", "vis_km": 8, "wind_kt": 5, "ceiling_ft": 15000, "rmk": "CAVOK pagi" },
+        { "icao": "WAYL", "vis_km": 5, "wind_kt": 8, "ceiling_ft": 8000, "rmk": "Kabut 11.00 WIT" },
+        { "icao": "WABP", "vis_km": 7, "wind_kt": 6, "ceiling_ft": 12000, "rmk": "Clear" }
+      ]
+    },
+
+    "system_config": {
+      "scoring_weights": {
+        "delivery_efficiency": 0.30,
+        "safety": 0.25,
+        "temporal": 0.20,
+        "fuel_efficiency": 0.15,
+        "environmental": 0.10
+      },
+      "quality_gate_threshold": 80,
+      "max_coa_count": 5,
+      "planner_modes": ["aerobridge_transport", "tactical_security", "maritime_interdiction", "disaster_response"],
+      "transport_subtypes": ["AIR_CARGO", "PERSONNEL_TRANSPORT", "MEDEVAC", "HUMANITARIAN_RELIEF", "MULTI_MODAL"]
+    }
+  }
+}

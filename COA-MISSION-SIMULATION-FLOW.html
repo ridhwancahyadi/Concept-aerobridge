@@ -1,0 +1,2050 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>COA-MISSION-SIMULATION-FLOW.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid@10.3.1/dist/mermaid.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="sentinel-os--coa-%E2%86%92-mission-planning-%E2%86%92-simulation-pipeline">Sentinel OS — COA → Mission Planning → Simulation Pipeline</h1>
+<p>Dokumentasi komprehensif alur data end-to-end dari Intelligence Feed, Course of Action (COA) generation, Mission Planning, hingga Tactical Simulation dalam platform <strong>Sentinel OS</strong>. Mencakup arsitektur frontend, backend agentic AI, custom type system, dan data flow di setiap stage.</p>
+<blockquote>
+<p>Sentinel OS adalah platform kesadaran situasional (situational awareness) berbasis web yang menyatukan berbagai sumber informasi ke dalam satu layar operasional. Platform ini dirancang multi-sektor — bisa digunakan untuk pertahanan &amp; keamanan, kebencanaan (BNPB), penegakan hukum, oil &amp; gas, logistik, hingga konservasi lingkungan.</p>
+</blockquote>
+<hr>
+<h2 id="daftar-isi">Daftar Isi</h2>
+<ol>
+<li><a href="#arsitektur-tingkat-tinggi">Arsitektur Tingkat Tinggi</a></li>
+<li><a href="#stage-0-intelligence-feed">Stage 0: Intelligence Feed</a></li>
+<li><a href="#stage-1-coa-generation">Stage 1: COA Generation</a></li>
+<li><a href="#stage-2-mission-planning">Stage 2: Mission Planning</a></li>
+<li><a href="#stage-3-tactical-simulation">Stage 3: Tactical Simulation</a></li>
+<li><a href="#data-flow-summary">Data Flow Summary</a></li>
+<li><a href="#custom-config--type-system--ai-output--map-rendering">Custom Config &amp; Type System</a></li>
+<li><a href="#error-handling--fallback-chain">Error Handling &amp; Fallback Chain</a></li>
+<li><a href="#timing-breakdown">Timing Breakdown</a></li>
+<li><a href="#sop--docling-integration">SOP &amp; Docling Integration</a></li>
+<li><a href="#penerapan-multi-sektor">Multi-Sector Applicability</a></li>
+<li><a href="#file-reference">File Reference</a></li>
+<li><a href="#database-tables">Database Tables</a></li>
+<li><a href="#key-design-decisions">Key Design Decisions</a></li>
+</ol>
+<hr>
+<h2 id="arsitektur-tingkat-tinggi">Arsitektur Tingkat Tinggi</h2>
+<pre><code class="language-mermaid"><div class="mermaid">graph LR
+    Z["📡 Data Sources\n(OSINT, HUMINT, Sensor)"] --> A["🌐 Intel Dashboard\n(EventFeed)"]
+    A --> B["📋 COA Panel"]
+    B -->|"SSE Stream"| C["🤖 COA Orchestrator\n(AI Agent)"]
+    C -->|"3 COA Options"| B
+    B -->|"navigate('/mission')\n+ raw COA data"| D["🎯 Mission Planner Page"]
+    D -->|"SSE Stream"| E["🤖 Mission Planner Agent\n(Agentic Tool Loop)"]
+    E -->|"TacticalPlan"| D
+    D -->|"'Play Simulation' button"| F["🎬 Simulation Generator"]
+    F -->|"SSE Stream"| G["🤖 Simulation Agent\n(AI)"]
+    G -->|"SimulationConfig"| F
+    F -->|"SimulationConfig"| H["🗺 MapSimulation\n(Mapbox GL Playback)"]
+</div></code></pre>
+<hr>
+<h2 id="stage-0-intelligence-feed">STAGE 0: Intelligence Feed</h2>
+<p>Sebelum COA generation, operator memerlukan <strong>konteks situasional</strong> — informasi tentang apa yang terjadi. Intelligence Feed adalah entry point seluruh pipeline.</p>
+<h3 id="01-sumber-data">0.1 Sumber Data</h3>
+<table>
+<thead>
+<tr>
+<th>Sumber</th>
+<th>Jenis</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OSINT</strong></td>
+<td>Berita, media sosial, laporan publik</td>
+<td>&quot;Kapal asing terdeteksi di ZEE Natuna&quot;</td>
+</tr>
+<tr>
+<td><strong>HUMINT</strong></td>
+<td>Laporan informan/agen</td>
+<td>&quot;Aktivitas mencurigakan di pelabuhan X&quot;</td>
+</tr>
+<tr>
+<td><strong>SIGINT</strong></td>
+<td>Data komunikasi, frekuensi radio</td>
+<td>&quot;Peningkatan trafik radio di sektor B&quot;</td>
+</tr>
+<tr>
+<td><strong>IMINT</strong></td>
+<td>Citra satelit, foto drone</td>
+<td>&quot;Pergerakan kendaraan di zona perbatasan&quot;</td>
+</tr>
+<tr>
+<td><strong>Sensor</strong></td>
+<td>CCTV, drone, bodycam, GPS, AIS</td>
+<td>&quot;Deteksi objek mencurigakan di CCTV #42&quot;</td>
+</tr>
+<tr>
+<td><strong>AIS</strong></td>
+<td>Automatic Identification System</td>
+<td>Track kapal real-time, anomali rute</td>
+</tr>
+</tbody>
+</table>
+<h3 id="02-penyajian-di-dashboard">0.2 Penyajian di Dashboard</h3>
+<pre class="hljs"><code><div>File: src/pages/IntelDashboard.tsx
+</div></code></pre>
+<ul>
+<li><strong>Peta Taktis 3D</strong> — setiap insiden muncul sebagai marker berwarna sesuai threat level:
+<ul>
+<li>🔴 <strong>Critical</strong> — respons segera</li>
+<li>🟠 <strong>High</strong> — perlu perencanaan</li>
+<li>🟡 <strong>Medium</strong> — dipantau</li>
+<li>🟢 <strong>Low</strong> — dicatat</li>
+</ul>
+</li>
+<li><strong>Feed Timeline</strong> — daftar kronologis insiden (filter + search)</li>
+<li><strong>Threat Matrix</strong> — visualisasi ancaman per wilayah</li>
+<li><strong>AI Insights</strong> — ringkasan situasi dari AI</li>
+<li><strong>Live Camera</strong> — feed CCTV/drone dengan YOLO object detection</li>
+</ul>
+<h3 id="03-trigger-ke-coa">0.3 Trigger ke COA</h3>
+<p>Operator <strong>memilih</strong> sebuah intel event → detail panel terbuka → tab <strong>&quot;COURSE OF ACTION&quot;</strong> → <strong>pipeline COA dimulai</strong>.</p>
+<hr>
+<h2 id="stage-1-coa-generation">STAGE 1: COA Generation</h2>
+<h3 id="11-trigger--frontend">1.1 Trigger — Frontend</h3>
+<p><strong>Entry point</strong>: User membuka intel event di Intelligence Dashboard, lalu menekan tab <strong>&quot;COURSE OF ACTION&quot;</strong> yang menampilkan <code>COAPanel</code>.</p>
+<pre class="hljs"><code><div>File: src/components/intel/COAPanel.tsx
+</div></code></pre>
+<p><strong>Dua cara trigger</strong>:</p>
+<ol>
+<li><strong>Auto-generate</strong> — jika prop <code>autoGenerate={true}</code>, COA langsung di-generate saat panel mount</li>
+<li><strong>Manual</strong> — user klik tombol <strong>&quot;GENERATE COA OPTIONS&quot;</strong></li>
+</ol>
+<p><strong>Input tambahan (opsional)</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Deskripsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOP Text</td>
+<td>Teks SOP yang di-paste manual</td>
+</tr>
+<tr>
+<td>SOP Upload</td>
+<td>File PDF/DOC yang di-extract via Docling API → teks</td>
+</tr>
+<tr>
+<td>Custom Prompt</td>
+<td>Instruksi analisis kustom (e.g. &quot;Focus on cyber threats&quot;)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-frontend-%E2%86%92-backend-api-call">1.2 Frontend → Backend API Call</h3>
+<pre class="hljs"><code><div>File: src/services/coaService.ts
+Function: generateCOAFromAI()
+</div></code></pre>
+<p>Frontend mengirim <code>POST /api/coa/generate</code> dengan body:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"event"</span>: { <span class="hljs-attr">"id"</span>, <span class="hljs-attr">"title"</span>, <span class="hljs-attr">"summary"</span>, <span class="hljs-attr">"category"</span>, <span class="hljs-attr">"threatLevel"</span>, <span class="hljs-attr">"lat"</span>, <span class="hljs-attr">"lng"</span>, <span class="hljs-attr">"country"</span>, ... },
+  <span class="hljs-attr">"userContext"</span>: <span class="hljs-string">"optional revision request"</span>,
+  <span class="hljs-attr">"previousResultId"</span>: <span class="hljs-string">"optional ID for revision"</span>,
+  <span class="hljs-attr">"sopContent"</span>: <span class="hljs-string">"optional SOP text"</span>,
+  <span class="hljs-attr">"customPrompt"</span>: <span class="hljs-string">"optional custom analysis"</span>
+}
+</div></code></pre>
+<p>Response menggunakan <strong>Server-Sent Events (SSE)</strong> untuk streaming reasoning steps secara real-time.</p>
+<h3 id="13-backend--coa-route-handler">1.3 Backend — COA Route Handler</h3>
+<pre class="hljs"><code><div>File: server/routes/coa.js
+Route: POST /api/coa/generate
+</div></code></pre>
+<p>Handler meng-setup SSE connection menggunakan shared utility:</p>
+<pre class="hljs"><code><div>File: server/utils/sse.js → setupSSE(res)
+</div></code></pre>
+<p>Lalu memanggil <code>generateCOA(event, options)</code> dari COA orchestrator.</p>
+<h3 id="14-backend--coa-orchestrator-ai-agent">1.4 Backend — COA Orchestrator (AI Agent)</h3>
+<pre class="hljs"><code><div>File: server/services/coa-orchestrator.js
+Function: generateCOA()
+</div></code></pre>
+<p><strong>Pipeline COA Agent:</strong></p>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD
+    S1["Step 1: Gather Terrain\n(Mapbox API)"] --> S2["Step 2: Build Prompt\n(Event + Terrain + SOP)"]
+    S2 --> S3["Step 3+: LLM Tool-Calling Loop"]
+    S3 --> T1["query_knowledge_repository"]
+    S3 --> T2["get_terrain_context"]
+    S3 --> T3["get_weather_conditions"]
+    S3 --> T4["recommend_naval_assets"]
+    S3 --> T5["search_ais_vessels"]
+    S3 --> T6["get_vessel_track"]
+    S3 --> T7["get_vessels_in_area"]
+    T1 -->|results| S3
+    T2 -->|results| S3
+    T3 -->|results| S3
+    T4 -->|results| S3
+    T5 -->|results| S3
+    T6 -->|results| S3
+    T7 -->|results| S3
+    S3 -->|"final JSON"| S4["Step Final: Parse + Attach Route Geometry"]
+</div></code></pre>
+<p><strong>Detail setiap step:</strong></p>
+<h4 id="step-1-gather-terrain-mapbox">Step 1: Gather Terrain (Mapbox)</h4>
+<pre class="hljs"><code><div>File: server/services/mapbox-service.js → gatherTerrainContext()
+</div></code></pre>
+<p>Mengambil data dari Mapbox API:</p>
+<ul>
+<li>Elevation grid (SRTM data)</li>
+<li>Reverse geocode (place name)</li>
+<li>Nearby facilities (airports, ports, hospitals via POI)</li>
+<li>Isochrone zones (15/30/60 min driving range)</li>
+<li>Driving routes dari facilities terdekat ke lokasi event</li>
+<li>Satellite + topographic imagery (Base64 untuk vision input ke LLM)</li>
+<li>Water/land detection</li>
+<li>Weather conditions (Open-Meteo: suhu, angin, visibility, curah hujan, flood risk, air quality, marine conditions)</li>
+</ul>
+<h4 id="step-2-build-user-prompt">Step 2: Build User Prompt</h4>
+<pre class="hljs"><code><div>File: server/services/prompts.js → buildUserPrompt()
+</div></code></pre>
+<p>Menggabungkan:</p>
+<ul>
+<li>Intel event data (title, summary, category, threat level, location, tags)</li>
+<li>Elevation data summary</li>
+<li>Geocode data</li>
+<li>Nearby facilities dengan koordinat</li>
+<li>Approach routes dengan jarak/durasi</li>
+<li>Satellite + topographic images (multimodal vision input)</li>
+<li>Previous result (jika regeneration/revision)</li>
+<li>User revision request</li>
+<li>SOP content</li>
+<li>Custom analysis prompt</li>
+</ul>
+<h4 id="step-3-llm-tool-calling-loop">Step 3+: LLM Tool-Calling Loop</h4>
+<pre class="hljs"><code><div>File: server/services/openai-tools.js → callOpenAIWithTools()
+</div></code></pre>
+<p><strong>Agentic loop</strong> — LLM secara otonom memutuskan tools mana yang perlu dipanggil:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>File Handler</th>
+<th>Fungsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>query_knowledge_repository</code></td>
+<td><code>knowledge-repository.js</code></td>
+<td>Cari berita/intel terbaru dari knowledge repo API</td>
+</tr>
+<tr>
+<td><code>get_terrain_context</code></td>
+<td><code>mapbox-service.js</code></td>
+<td>Dapatkan data terrain untuk lokasi baru</td>
+</tr>
+<tr>
+<td><code>get_weather_conditions</code></td>
+<td><code>mapbox-service.js</code> + Open-Meteo</td>
+<td>Weather real-time + flood risk + marine</td>
+</tr>
+<tr>
+<td><code>recommend_naval_assets</code></td>
+<td><code>asset-recommender.js</code></td>
+<td>Rekomendasi asset TNI AL (multi-criteria scoring + sub-agent)</td>
+</tr>
+<tr>
+<td><code>search_ais_vessels</code></td>
+<td><code>ais-service.js</code></td>
+<td>Cari kapal di database AIS berdasarkan nama/MMSI</td>
+</tr>
+<tr>
+<td><code>get_vessel_track</code></td>
+<td><code>ais-service.js</code></td>
+<td>Track history 24 jam AIS untuk vessel tertentu</td>
+</tr>
+<tr>
+<td><code>get_vessels_in_area</code></td>
+<td><code>ais-service.js</code></td>
+<td>Semua kapal di area maritim (by sea name atau bbox)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Config:</strong></p>
+<ul>
+<li>Model: configurable via <code>LLM_MODEL</code> env</li>
+<li>Max tokens: 16,384</li>
+<li>Max tool rounds: 5</li>
+<li>Max retries: 3</li>
+<li>Parallel tool calls: enabled</li>
+</ul>
+<p>Setiap tool call dikirim ke frontend via SSE sebagai <code>event: step</code>.</p>
+<h4 id="step-final-output">Step Final: Output</h4>
+<p>LLM menghasilkan JSON response:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"analysis"</span>: {
+    <span class="hljs-attr">"terrain_summary"</span>: <span class="hljs-string">"..."</span>,
+    <span class="hljs-attr">"key_features"</span>: [<span class="hljs-string">"..."</span>, <span class="hljs-string">"..."</span>],
+    <span class="hljs-attr">"threat_assessment"</span>: <span class="hljs-string">"..."</span>,
+    <span class="hljs-attr">"recommended_approach"</span>: <span class="hljs-string">"..."</span>
+  },
+  <span class="hljs-attr">"options"</span>: [
+    {
+      <span class="hljs-attr">"id"</span>: <span class="hljs-string">"coa-1"</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Maritime Interdiction"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"..."</span>,
+      <span class="hljs-attr">"assetType"</span>: <span class="hljs-string">"corvette"</span>,
+      <span class="hljs-attr">"eta"</span>: <span class="hljs-string">"4 hours"</span>,
+      <span class="hljs-attr">"riskLevel"</span>: <span class="hljs-string">"MED"</span>,
+      <span class="hljs-attr">"confidence"</span>: <span class="hljs-number">82</span>,
+      <span class="hljs-attr">"icon"</span>: <span class="hljs-string">"🚢"</span>,
+      <span class="hljs-attr">"phases"</span>: [{ <span class="hljs-attr">"name"</span>: <span class="hljs-string">"..."</span>, <span class="hljs-attr">"description"</span>: <span class="hljs-string">"..."</span>, <span class="hljs-attr">"duration"</span>: <span class="hljs-string">"..."</span> }],
+      <span class="hljs-attr">"route_waypoints"</span>: [{ <span class="hljs-attr">"lat"</span>: ..., <span class="hljs-attr">"lng"</span>: ..., <span class="hljs-attr">"alt"</span>: ..., <span class="hljs-attr">"label"</span>: <span class="hljs-string">"..."</span>, <span class="hljs-attr">"action"</span>: <span class="hljs-string">"..."</span> }],
+      <span class="hljs-attr">"terrain_notes"</span>: <span class="hljs-string">"..."</span>
+    }
+    <span class="hljs-comment">// ... 2 more COAs</span>
+  ]
+}
+</div></code></pre>
+<p><strong>Data tambahan yang di-attach:</strong></p>
+<ul>
+<li><code>terrainContext</code> — elevation, weather, satellite, waterDetection</li>
+<li><code>recommendedAssets</code> — hasil dari <code>recommend_naval_assets</code> tool</li>
+<li><code>metadata</code> — model, processingTime, totalTokens</li>
+</ul>
+<p>Result di-save ke database (<code>coa_results</code> table) dan dikirim ke frontend via SSE <code>event: complete</code>.</p>
+<h3 id="15-frontend--render-coa">1.5 Frontend — Render COA</h3>
+<p><code>COAPanel</code> menampilkan:</p>
+<ol>
+<li><strong>Agent Reasoning Breadcrumb</strong> — step-by-step progress dari AI (real-time via SSE)</li>
+<li><strong>Terrain Analysis</strong> — ringkasan analisis terrain dari LLM</li>
+<li><strong>Environment Conditions</strong> — suhu, angin, visibility, cloud cover, flood risk, AQI, marine state</li>
+<li><strong>3 COA Cards</strong> — masing-masing dengan nama, deskripsi, asset type, ETA, risk level, confidence</li>
+<li><strong>Re-generate</strong> — input field untuk revisi COA dengan konteks tambahan</li>
+<li><strong>&quot;GO TO MISSION PLAN&quot;</strong> button — navigasi ke Mission Planner dengan data COA terpilih</li>
+</ol>
+<hr>
+<h2 id="stage-2-mission-planning">STAGE 2: Mission Planning</h2>
+<h3 id="21-trigger--dua-jalur">2.1 Trigger — Dua Jalur</h3>
+<h4 id="jalur-a-auto-trigger-dari-coa-primary-flow">Jalur A: Auto-trigger dari COA (Primary Flow)</h4>
+<p>User memilih 1-3 COA di COAPanel, lalu klik <strong>&quot;GO TO MISSION PLAN&quot;</strong>.</p>
+<pre class="hljs"><code><div>File: src/components/intel/COAPanel.tsx → handleGoToMissionPlan()
+</div></code></pre>
+<p>Frontend navigasi ke <code>/mission</code> via <code>react-router</code> dengan state:</p>
+<pre class="hljs"><code><div>navigate(<span class="hljs-string">'/mission'</span>, {
+  state: {
+    eventId, eventTitle, eventLat, eventLng,
+    category, country, coaId,
+    suggestedAssets: selectedCoas.map(<span class="hljs-function"><span class="hljs-params">c</span> =&gt;</span> c.assetType),
+    rawCoas: selectedCoas,       <span class="hljs-comment">// Raw COA data</span>
+    coaAnalysis: analysis,       <span class="hljs-comment">// Terrain analysis</span>
+    recommendedAssets,           <span class="hljs-comment">// Naval asset recommendations</span>
+    sopContent,                  <span class="hljs-comment">// SOP text (dibawa dari COA stage)</span>
+    customPrompt,                <span class="hljs-comment">// Custom prompt (dibawa dari COA stage)</span>
+  }
+});
+</div></code></pre>
+<h4 id="jalur-b-manual-prompt-direct">Jalur B: Manual Prompt (Direct)</h4>
+<p>User membuka Mission Planner page → klik <strong>&quot;⚡ New AI Mission&quot;</strong> → ketik prompt natural language.</p>
+<pre class="hljs"><code><div>File: src/components/mission/MissionPromptInput.tsx
+</div></code></pre>
+<h3 id="22-auto-trigger-pipeline">2.2 Auto-trigger Pipeline</h3>
+<pre class="hljs"><code><div>File: src/pages/MissionPlanner.tsx → useEffect (auto-trigger)
+</div></code></pre>
+<p>Jika ada <code>rawCoas</code> di navigation state, Mission Planner <strong>otomatis</strong>:</p>
+<ol>
+<li>
+<p><strong>Build prompt dari COA</strong> via <code>buildPromptFromCOA()</code>:</p>
+<pre class="hljs"><code><div>File: src/services/missionPlannerService.ts → buildPromptFromCOA()
+</div></code></pre>
+<p>Menggabungkan:</p>
+<ul>
+<li>Intelligence event (title, summary, lat/lng, category)</li>
+<li>Selected COA summaries (name, description, asset type)</li>
+<li>Prior terrain analysis</li>
+<li>Existing waypoints dari COA</li>
+<li>Instructions untuk comprehensive mission plan</li>
+</ul>
+</li>
+<li>
+<p><strong>Call SSE endpoint</strong> via <code>generateMissionPlanSSE()</code>:</p>
+<pre class="hljs"><code><div>File: src/services/missionPlannerService.ts → generateMissionPlanSSE()
+</div></code></pre>
+<p>Request: <code>POST /api/mission-planner/generate</code></p>
+</li>
+<li>
+<p><strong>Show overlay</strong> dengan reasoning steps selama proses berjalan</p>
+</li>
+</ol>
+<h3 id="23-backend--mission-planner-route-handler">2.3 Backend — Mission Planner Route Handler</h3>
+<pre class="hljs"><code><div>File: server/routes/mission-planner.js
+Route: POST /api/mission-planner/generate
+</div></code></pre>
+<p>Setup SSE → panggil <code>generateMissionPlan(prompt, options)</code>.</p>
+<h3 id="24-backend--mission-planner-agent-agentic-ai">2.4 Backend — Mission Planner Agent (Agentic AI)</h3>
+<pre class="hljs"><code><div>File: server/services/mission-planner-agent.js
+Function: generateMissionPlan()
+</div></code></pre>
+<p><strong>Pipeline Mission Planner Agent:</strong></p>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD
+    P1["Step 1: Parse User Intent"] --> P2["Step 2+: Agentic Tool Loop\n(max 20 rounds)"]
+    P2 --> T1["query_knowledge_repository\n(intel terbaru)"]
+    P2 --> T2["get_terrain_context\n(elevation, facilities)"]
+    P2 --> T3["calculate_routes\n(Mapbox Directions)"]
+    P2 --> T4["get_weather_conditions\n(cuaca + marine)"]
+    P2 --> T5["recommend_naval_assets\n(TNI AL)"]
+    P2 --> T6["search_ais_vessels\n(cari kapal)"]
+    P2 --> T7["get_vessel_track\n(track AIS)"]
+    P2 --> T8["get_vessels_in_area\n(area surveillance)"]
+    T1 -->|results| P2
+    T2 -->|results| P2
+    T3 -->|results| P2
+    T4 -->|results| P2
+    T5 -->|results| P2
+    T6 -->|results| P2
+    T7 -->|results| P2
+    T8 -->|results| P2
+    P2 -->|"final JSON"| P3["Transform to TacticalPlan"]
+    P3 --> P4["Save to Database"]
+</div></code></pre>
+<p><strong>Config:</strong></p>
+<ul>
+<li>Model: configurable via <code>LLM_MODEL</code> env</li>
+<li>Max tokens: 16,384</li>
+<li>Max tool rounds: <strong>20</strong> (lebih banyak dari COA karena planning lebih kompleks)</li>
+<li>Max retries: <strong>10</strong> (lebih resilient)</li>
+<li>Parallel tool calls: enabled</li>
+<li>Reasoning effort: <code>medium</code></li>
+</ul>
+<p><strong>Key differences dari COA Agent:</strong></p>
+<ul>
+<li>Mission Planner menambahkan <code>calculate_routes</code> tool (Mapbox Directions API)</li>
+<li>Tool calls di-log ke database (<code>agentToolCalls</code> table) untuk audit</li>
+<li>Reasoning steps di-log ke database (<code>agentReasoning</code> table)</li>
+<li>Output di-transform ke <code>TacticalPlan</code> format yang sangat terstruktur</li>
+</ul>
+<h4 id="llm-output-structure">LLM Output Structure</h4>
+<p>LLM menghasilkan JSON besar dengan:</p>
+<ol>
+<li><strong>Mission Overview</strong> — name, type, status, description</li>
+<li><strong>Operational Details</strong> — commander, comms channel, ROE</li>
+<li><strong>AOI</strong> — center coords, radius, bounds, key locations</li>
+<li><strong>Objectives</strong> — primary, secondary, constraints</li>
+<li><strong>Threat Assessment</strong> — level, score, factors (with weights)</li>
+<li><strong>Execution Phases</strong> — id, name, status, description</li>
+<li><strong>Tactical Brief</strong> — phases with unit assignments (callsign, mission, route, ETA, modules)</li>
+<li><strong>Map Annotations</strong> — routes, symbols, areas dengan geo-coordinates</li>
+<li><strong>Route Options</strong> — distance, duration, difficulty, waypoints</li>
+<li><strong>Risk Mitigation</strong> — primary strategy + contingencies</li>
+</ol>
+<h3 id="25-transform-to-tacticalplan">2.5 Transform to TacticalPlan</h3>
+<pre class="hljs"><code><div>File: server/services/mission-planner-agent.js → transformToTacticalPlan()
+</div></code></pre>
+<p>Mengkonversi raw LLM JSON ke format <code>TacticalPlan</code> frontend:</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph LR
+    A["Raw LLM JSON"] --> B["transformToTacticalPlan()"]
+    B --> C["TacticalPlan"]
+    
+    subgraph "Transform Details"
+        D["mapAnnotations.routes → drawing type='route'"]
+        E["mapAnnotations.symbols → drawing type='symbol'"]
+        F["mapAnnotations.areas → drawing type='area'"]
+        G["threatAssessment → risk score panel data"]
+        H["tacticalBrief → unit tasking panel data"]
+        I["AOI center → defaultViewport"]
+    end
+</div></code></pre>
+<p><strong>Drawing transformations:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Drawing Type</th>
+<th>Rendered As</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mapAnnotations.routes</code></td>
+<td><code>route</code></td>
+<td>Polyline on map</td>
+</tr>
+<tr>
+<td><code>mapAnnotations.symbols</code></td>
+<td><code>symbol</code></td>
+<td>Markers with icons</td>
+</tr>
+<tr>
+<td><code>mapAnnotations.areas</code></td>
+<td><code>area</code></td>
+<td>Polygons with fill</td>
+</tr>
+<tr>
+<td><code>keyLocations</code> (fallback)</td>
+<td><code>symbol</code></td>
+<td>Markers with type-based icons</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Weather data extraction</strong>: dari tool calls result, di-attach ke plan sebagai <code>plan.weather</code>.</p>
+<h3 id="26-save--return">2.6 Save &amp; Return</h3>
+<p>Plan di-return ke frontend via SSE <code>event: complete</code>:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"plan"</span>: { <span class="hljs-comment">/* TacticalPlan */</span> },
+  <span class="hljs-attr">"reasoningSteps"</span>: [ <span class="hljs-comment">/* step-by-step */</span> ],
+  <span class="hljs-attr">"toolCalls"</span>: [ <span class="hljs-comment">/* tool execution logs */</span> ],
+  <span class="hljs-attr">"metadata"</span>: { <span class="hljs-attr">"processingTimeMs"</span>, <span class="hljs-attr">"totalTokens"</span>, <span class="hljs-attr">"model"</span> }
+}
+</div></code></pre>
+<p>Plan <strong>juga</strong> di-save ke database saat user interacts (separate save endpoint).</p>
+<h3 id="27-frontend--render-mission-plan">2.7 Frontend — Render Mission Plan</h3>
+<pre class="hljs"><code><div>File: src/pages/MissionPlanner.tsx
+</div></code></pre>
+<p>Mission Planner page menampilkan:</p>
+<table>
+<thead>
+<tr>
+<th>Panel</th>
+<th>Component</th>
+<th>Data Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Map dengan drawings</td>
+<td><code>TacticalMap</code> + <code>DrawingLayers</code></td>
+<td><code>plan.drawings</code> (routes, symbols, areas)</td>
+</tr>
+<tr>
+<td>Plan Detail</td>
+<td><code>PlanDetail</code></td>
+<td>Phases, objectives, tactical brief</td>
+</tr>
+<tr>
+<td>Risk Score</td>
+<td><code>RiskScorePanel</code></td>
+<td><code>plan.threatAssessment</code> (score, level, factors)</td>
+</tr>
+<tr>
+<td>Recommended Assets</td>
+<td><code>RecommendedAssetsPanel</code></td>
+<td><code>plan.recommendedAssets</code> (dari COA stage)</td>
+</tr>
+<tr>
+<td>Sensor Detection</td>
+<td><code>SensorDetectionPanel</code></td>
+<td>Auto-detected sensors near AOI</td>
+</tr>
+<tr>
+<td>Weather</td>
+<td>Included in plan data</td>
+<td>Temperature, wind, visibility</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Map viewport</strong> di-set otomatis dari bounding box semua drawing coordinates.</p>
+<hr>
+<h2 id="stage-3-tactical-simulation">STAGE 3: Tactical Simulation</h2>
+<h3 id="31-trigger">3.1 Trigger</h3>
+<p>User klik <strong>&quot;▶ Play Simulation&quot;</strong> button di header Mission Planner.</p>
+<pre class="hljs"><code><div>File: src/pages/MissionPlanner.tsx → onClick handler
+</div></code></pre>
+<p><strong>Logic:</strong></p>
+<ol>
+<li>Cek existing simulation: <code>GET /api/simulation/{missionId}</code></li>
+<li>Jika ada → langsung load</li>
+<li>Jika tidak ada → generate baru via SSE</li>
+</ol>
+<h3 id="32-frontend-%E2%86%92-backend-api-call">3.2 Frontend → Backend API Call</h3>
+<pre class="hljs"><code><div>POST /api/simulation/generate
+Body: { missionId, planData: activePlan }
+</div></code></pre>
+<h3 id="33-backend--simulation-route-handler">3.3 Backend — Simulation Route Handler</h3>
+<pre class="hljs"><code><div>File: server/routes/simulation.js
+Route: POST /api/simulation/generate
+</div></code></pre>
+<p>Setup SSE → panggil <code>generateSimulation(planData, options)</code>.</p>
+<h3 id="34-backend--simulation-agent">3.4 Backend — Simulation Agent</h3>
+<pre class="hljs"><code><div>File: server/services/simulation-agent.js
+Function: generateSimulation()
+</div></code></pre>
+<p><strong>Pipeline:</strong></p>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD
+    S1["Step 1: Analyze Plan\n(buildPlanSummary)"] --> S2["Step 2: LLM Call\n(Single-shot, no tool loop)"]
+    S2 --> S3["Step 3: Validate and Enrich\n(enrichSimConfig)"]
+    S3 --> S4["Step 4: Save to DB"]
+    S4 --> S5["Step 5: Return SimConfig"]
+</div></code></pre>
+<p><strong>Stage 3 berbeda dari COA/Mission</strong>: Simulation Agent TIDAK menggunakan tool-calling. Ini adalah single-shot LLM call karena semua data yang dibutuhkan sudah ada di mission plan.</p>
+<h4 id="step-1-build-plan-summary">Step 1: Build Plan Summary</h4>
+<pre class="hljs"><code><div>File: simulation-agent.js → buildPlanSummary()
+</div></code></pre>
+<p>Mengekstrak dari TacticalPlan:</p>
+<ul>
+<li>Mission name, description, threat level</li>
+<li>AOI center coordinates</li>
+<li>Commander, comms channel, ROE</li>
+<li>Execution phases dengan descriptions</li>
+<li>Unit tasking (callsign, type, mission, route, ETA)</li>
+<li>Map features (drawings) dengan coordinates</li>
+<li>Objectives</li>
+</ul>
+<h4 id="step-2-llm-single-shot-call">Step 2: LLM Single-Shot Call</h4>
+<p>System prompt menginstruksikan LLM untuk generate:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Deskripsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>units[]</code></td>
+<td>Array unit dengan type, callsign, color, <strong>geo-coordinate path</strong></td>
+</tr>
+<tr>
+<td><code>units[].path[]</code></td>
+<td>10-25 waypoints: <code>{ t, lng, lat, alt, heading, speed, action }</code></td>
+</tr>
+<tr>
+<td><code>groundTargets[]</code></td>
+<td>Target posisi statis: <code>{ id, label, lng, lat, type, destroyTime }</code></td>
+</tr>
+<tr>
+<td><code>events[]</code></td>
+<td>Timeline events: <code>{ time, type, label, unitId, score, location }</code></td>
+</tr>
+<tr>
+<td><code>phases[]</code></td>
+<td>Phase timing: <code>{ name, startTime, endTime }</code></td>
+</tr>
+<tr>
+<td><code>aoi</code></td>
+<td>Camera setup: <code>{ center, zoom, pitch, bearing }</code></td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td>Total playback durasi (120-300 detik)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rules untuk waypoint generation:</strong></p>
+<ul>
+<li>Aircraft: 200-500 km/h, smooth flight paths</li>
+<li>Helicopters: 100-250 km/h</li>
+<li>Ground/Naval: 20-80 km/h</li>
+<li>Paths mengikuti routes dari mission plan drawings</li>
+<li>Enemy units approach dari luar AOI</li>
+<li>1° ≈ 111 km (digunakan untuk offset calculation)</li>
+</ul>
+<p><strong>Config:</strong></p>
+<ul>
+<li>Model: configurable via <code>LLM_MODEL</code> env</li>
+<li>Max tokens: 16,384</li>
+<li>Max retries: 3</li>
+<li>Temperature: 1 (higher creativity for varied simulations)</li>
+</ul>
+<h4 id="step-3-enrich-simconfig">Step 3: Enrich SimConfig</h4>
+<pre class="hljs"><code><div>File: simulation-agent.js → enrichSimConfig()
+</div></code></pre>
+<ul>
+<li>Assign consistent unit IDs</li>
+<li>Set default colors: ally <code>#00bfff</code>, enemy <code>#ff2255</code></li>
+<li>Normalize unit types (<code>player</code> → <code>ally</code>)</li>
+<li>Ensure AOI from plan viewport</li>
+<li>Normalize waypoint defaults (heading, speed, action)</li>
+<li>Set min duration to 180s if too short</li>
+</ul>
+<h4 id="step-4-save-to-database">Step 4: Save to Database</h4>
+<pre class="hljs"><code><div>File: server/services/db.js → simulationDataStore.create()
+</div></code></pre>
+<p>Saved sebagai JSON di <code>simulation_data</code> table.</p>
+<h3 id="35-frontend--map-simulation-playback">3.5 Frontend — Map Simulation Playback</h3>
+<p>Simulation di-render menggunakan dua komponen:</p>
+<h4 id="a-mapsimulation-primary--mapbox-gl">A. MapSimulation (Primary — Mapbox GL)</h4>
+<pre class="hljs"><code><div>File: src/components/simulation/MapSimulation.tsx
+</div></code></pre>
+<p>Render langsung di atas Mapbox GL map yang sudah ada. Menggunakan <strong>native Mapbox layers</strong> (bukan Canvas overlay):</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Type</th>
+<th>Fungsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sim-units-src</code></td>
+<td>GeoJSON Source</td>
+<td>Posisi semua unit + ground targets</td>
+</tr>
+<tr>
+<td><code>sim-icons-lyr</code></td>
+<td>Symbol Layer</td>
+<td>Render chevron (air) / square (ground) icons</td>
+</tr>
+<tr>
+<td><code>sim-labels-lyr</code></td>
+<td>Symbol Layer</td>
+<td>Callsign labels</td>
+</tr>
+<tr>
+<td><code>sim-trail-{unitId}</code></td>
+<td>Line Layer</td>
+<td>Movement trail per unit</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Geo interpolation:</strong></p>
+<pre class="hljs"><code><div>File: src/types/simulation-types.ts → interpolateGeo()
+</div></code></pre>
+<ul>
+<li>Interpolasi linear antara waypoint berdasarkan waktu <code>t</code></li>
+<li>Menghitung heading dari 2 consecutive positions</li>
+<li>Altitude digunakan untuk flight levels display</li>
+</ul>
+<p><strong>SVG Sprites:</strong></p>
+<ul>
+<li>Chevron (ally blue / enemy red) — untuk air units</li>
+<li>Square (ally blue / enemy red) — untuk ground/naval units</li>
+<li>Target crosshair / destroyed target</li>
+</ul>
+<p><strong>Animation loop (<code>requestAnimationFrame</code>):</strong></p>
+<ol>
+<li>Update GeoJSON source data (satu <code>setData()</code> call)</li>
+<li>Update trail LineStrings (setiap 5 frame untuk performance)</li>
+<li>Process events (destroyed, detected, phase_change, alert)</li>
+<li>Camera follow — smooth pan ke allied unit setiap 2 detik</li>
+<li>Advance time berdasarkan speed multiplier</li>
+</ol>
+<p><strong>Playback controls:</strong></p>
+<ul>
+<li>▶ Play / ⏸ Pause / ⟳ Replay</li>
+<li>Speed: 1× / 2× / 4×</li>
+<li>Seek bar (click to jump)</li>
+<li>💾 Save / 📥 Export JSON / ✕ Close</li>
+</ul>
+<h4 id="b-simulationplayer-canvas-based--standalone">B. SimulationPlayer (Canvas-based — Standalone)</h4>
+<pre class="hljs"><code><div>File: src/components/simulation/SimulationPlayer.tsx
+</div></code></pre>
+<p>Render simulasi di Canvas 2D terpisah (non-map). Digunakan untuk mock simulation scenarios.</p>
+<h3 id="36-event-timeline">3.6 Event Timeline</h3>
+<p>Events di-render di event log panel saat waktu simulasi melewati <code>event.time</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Event Type</th>
+<th>Visual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>phase_change</code></td>
+<td>Phase name update di HUD</td>
+</tr>
+<tr>
+<td><code>destroyed</code></td>
+<td>Explosion animation, unit fade out</td>
+</tr>
+<tr>
+<td><code>detected</code></td>
+<td>Alert di event log</td>
+</tr>
+<tr>
+<td><code>objective</code></td>
+<td>Objective completion badge</td>
+</tr>
+<tr>
+<td><code>alert</code></td>
+<td>Situational change notification</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="data-flow-summary">Data Flow Summary</h2>
+<pre><code class="language-mermaid"><div class="mermaid">sequenceDiagram
+    participant U as User
+    participant FE as Frontend
+    participant BE as Backend API
+    participant LLM as LLM Engine
+    participant APIs as External APIs
+    
+    Note over U,APIs: STAGE 1 — COA Generation
+    U->>FE: Click "Generate COA" on intel event
+    FE->>BE: POST /api/coa/generate (SSE)
+    BE->>APIs: Mapbox (terrain, satellite, routes, weather)
+    BE->>LLM: System prompt + event + terrain + images
+    loop Agentic Tool Loop (max 5 rounds)
+        LLM->>BE: Tool call request
+        BE->>APIs: Execute tool (knowledge, AIS, naval assets...)
+        BE->>LLM: Tool result
+        BE-->>FE: SSE event: step
+    end
+    LLM->>BE: Final JSON (3 COAs)
+    BE->>BE: Save to coa_results DB
+    BE-->>FE: SSE event: complete
+    FE->>U: Render 3 COA cards + terrain analysis
+    
+    Note over U,APIs: STAGE 2 — Mission Planning
+    U->>FE: Select COAs → "GO TO MISSION PLAN"
+    FE->>FE: navigate('/mission') with COA data
+    FE->>FE: buildPromptFromCOA()
+    FE->>BE: POST /api/mission-planner/generate (SSE)
+    BE->>LLM: System prompt + COA-derived prompt
+    loop Agentic Tool Loop (max 20 rounds)
+        LLM->>BE: Tool call request
+        BE->>APIs: Execute tools (knowledge, terrain, routes, AIS, weather, naval)
+        BE->>LLM: Tool result
+        BE->>BE: Log tool call to DB
+        BE-->>FE: SSE event: step
+    end
+    LLM->>BE: Final JSON (raw plan)
+    BE->>BE: transformToTacticalPlan()
+    BE-->>FE: SSE event: complete (TacticalPlan)
+    FE->>FE: Add plan to Zustand store
+    FE->>U: Render map + drawings + risk panel + tactical brief
+    
+    Note over U,APIs: STAGE 3 — Simulation
+    U->>FE: Click "▶ Play Simulation"
+    FE->>BE: POST /api/simulation/generate (SSE)
+    BE->>BE: buildPlanSummary(planData)
+    BE->>LLM: System prompt + plan summary
+    LLM->>BE: SimulationConfig JSON
+    BE->>BE: enrichSimConfig() + save to DB
+    BE-->>FE: SSE event: complete (SimulationConfig)
+    FE->>FE: MapSimulation renders on Mapbox GL
+    FE->>U: Animated playback with units, trails, events
+</div></code></pre>
+<hr>
+<h2 id="file-reference">File Reference</h2>
+<h3 id="backend-nodejs">Backend (Node.js)</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Fungsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[coa.js](file:///home/dhifaf/mvp-tactical-showcase/app/server/routes/coa.js)</td>
+<td>COA route handler (SSE)</td>
+</tr>
+<tr>
+<td>[mission-planner.js](file:///home/dhifaf/mvp-tactical-showcase/app/server/routes/mission-planner.js)</td>
+<td>Mission planner route handler (SSE)</td>
+</tr>
+<tr>
+<td>[simulation.js](file:///home/dhifaf/mvp-tactical-showcase/app/server/routes/simulation.js)</td>
+<td>Simulation route handler (SSE)</td>
+</tr>
+<tr>
+<td>[coa-orchestrator.js](file:///home/dhifaf/mvp-tactical-showcase/app/server/services/coa-orchestrator.js)</td>
+<td>COA AI agent (terrain → LLM + tools)</td>
+</tr>
+<tr>
+<td>[mission-planner-agent.js](file:///home/dhifaf/mvp-tactical-showcase/app/server/services/mission-planner-agent.js)</td>
+<td>Mission planner AI agent (agentic loop + transform)</td>
+</tr>
+<tr>
+<td>[simulation-agent.js](file:///home/dhifaf/mvp-tactical-showcase/app/server/services/simulation-agent.js)</td>
+<td>Simulation AI agent (single-shot LLM)</td>
+</tr>
+<tr>
+<td>[openai-tools.js](file:///home/dhifaf/mvp-tactical-showcase/app/server/services/openai-tools.js)</td>
+<td>Shared tool definitions + handlers + agentic loop</td>
+</tr>
+<tr>
+<td>[prompts.js](file:///home/dhifaf/mvp-tactical-showcase/app/server/services/prompts.js)</td>
+<td>COA system prompt + schema + user prompt builder</td>
+</tr>
+<tr>
+<td>[llm-client.js](file:///home/dhifaf/mvp-tactical-showcase/app/server/services/llm-client.js)</td>
+<td>Abstraksi provider LLM (mendukung berbagai provider)</td>
+</tr>
+<tr>
+<td>[mapbox-service.js](file:///home/dhifaf/mvp-tactical-showcase/app/server/services/mapbox-service.js)</td>
+<td>Terrain, routes, weather, water detection</td>
+</tr>
+<tr>
+<td>[asset-recommender.js](file:///home/dhifaf/mvp-tactical-showcase/app/server/services/asset-recommender.js)</td>
+<td>TNI AL asset recommendation engine</td>
+</tr>
+<tr>
+<td>[ais-service.js](file:///home/dhifaf/mvp-tactical-showcase/app/server/services/ais-service.js)</td>
+<td>AIS maritime API client</td>
+</tr>
+<tr>
+<td>[knowledge-repository.js](file:///home/dhifaf/mvp-tactical-showcase/app/server/services/knowledge-repository.js)</td>
+<td>External knowledge/news API</td>
+</tr>
+<tr>
+<td>[sse.js](file:///home/dhifaf/mvp-tactical-showcase/app/server/utils/sse.js)</td>
+<td>Shared SSE setup utilities</td>
+</tr>
+<tr>
+<td>[db.js](file:///home/dhifaf/mvp-tactical-showcase/app/server/services/db.js)</td>
+<td>SQLite database + all data stores</td>
+</tr>
+</tbody>
+</table>
+<h3 id="frontend-react--typescript">Frontend (React + TypeScript)</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Fungsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[COAPanel.tsx](file:///home/dhifaf/mvp-tactical-showcase/app/src/components/intel/COAPanel.tsx)</td>
+<td>COA UI panel (generate, display, select)</td>
+</tr>
+<tr>
+<td>[MissionPlanner.tsx](file:///home/dhifaf/mvp-tactical-showcase/app/src/pages/MissionPlanner.tsx)</td>
+<td>Mission planner page (auto-trigger + plan view)</td>
+</tr>
+<tr>
+<td>[MissionPromptInput.tsx](file:///home/dhifaf/mvp-tactical-showcase/app/src/components/mission/MissionPromptInput.tsx)</td>
+<td>Manual mission prompt input + SSE</td>
+</tr>
+<tr>
+<td>[MapSimulation.tsx](file:///home/dhifaf/mvp-tactical-showcase/app/src/components/simulation/MapSimulation.tsx)</td>
+<td>Mapbox GL simulation playback (primary)</td>
+</tr>
+<tr>
+<td>[SimulationPlayer.tsx](file:///home/dhifaf/mvp-tactical-showcase/app/src/components/simulation/SimulationPlayer.tsx)</td>
+<td>Canvas-based simulation (standalone)</td>
+</tr>
+<tr>
+<td>[RiskScorePanel.tsx](file:///home/dhifaf/mvp-tactical-showcase/app/src/components/mission/RiskScorePanel.tsx)</td>
+<td>Threat assessment visualization</td>
+</tr>
+<tr>
+<td>[RecommendedAssetsPanel.tsx](file:///home/dhifaf/mvp-tactical-showcase/app/src/components/mission/RecommendedAssetsPanel.tsx)</td>
+<td>Naval asset recommendations</td>
+</tr>
+<tr>
+<td>[SensorDetectionPanel.tsx](file:///home/dhifaf/mvp-tactical-showcase/app/src/components/mission/SensorDetectionPanel.tsx)</td>
+<td>Sensor auto-detection + activation</td>
+</tr>
+<tr>
+<td>[TacticalBriefPanel.tsx](file:///home/dhifaf/mvp-tactical-showcase/app/src/components/mission/TacticalBriefPanel.tsx)</td>
+<td>Unit tasking display</td>
+</tr>
+<tr>
+<td>[AgentReasoningBreadcrumb.tsx](file:///home/dhifaf/mvp-tactical-showcase/app/src/components/agent/AgentReasoningBreadcrumb.tsx)</td>
+<td>Real-time AI reasoning steps UI</td>
+</tr>
+<tr>
+<td>[coaService.ts](file:///home/dhifaf/mvp-tactical-showcase/app/src/services/coaService.ts)</td>
+<td>COA API client + SSE parser</td>
+</tr>
+<tr>
+<td>[missionPlannerService.ts](file:///home/dhifaf/mvp-tactical-showcase/app/src/services/missionPlannerService.ts)</td>
+<td>Mission planner API client + buildPromptFromCOA</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="database-tables">Database Tables</h2>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Stage</th>
+<th>Isi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>coa_results</code></td>
+<td>COA</td>
+<td>Analysis + options + terrain data per event</td>
+</tr>
+<tr>
+<td><code>mission_plans</code></td>
+<td>Mission</td>
+<td>Plan name + full JSON + user ownership</td>
+</tr>
+<tr>
+<td><code>simulation_data</code></td>
+<td>Simulation</td>
+<td>Full SimConfig JSON + mission_id link</td>
+</tr>
+<tr>
+<td><code>agent_reasoning</code></td>
+<td>Mission</td>
+<td>Step-by-step reasoning logs</td>
+</tr>
+<tr>
+<td><code>agent_tool_calls</code></td>
+<td>Mission</td>
+<td>Tool call parameters + results + duration</td>
+</tr>
+<tr>
+<td><code>plans</code></td>
+<td>Mission</td>
+<td>Saved plan data (alternative save path)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="custom-config--type-system--ai-output-%E2%86%92-map-rendering">Custom Config &amp; Type System — AI Output → Map Rendering</h2>
+<p>Salah satu aspek terpenting dari sistem ini adalah <strong>custom type system</strong> yang menjembatani output JSON dari AI agent ke elemen visual di peta Mapbox GL. Tanpa konversi ini, output LLM hanya berupa teks/JSON biasa yang tidak bisa dirender.</p>
+<h3 id="type-1-tacticaldrawing--map-annotations-dari-mission-planner">Type 1: <code>TacticalDrawing</code> — Map Annotations dari Mission Planner</h3>
+<pre class="hljs"><code><div>File: src/types/tactical.ts
+</div></code></pre>
+<p><strong><code>TacticalDrawing</code></strong> adalah unit dasar untuk semua elemen visual di peta. Ini adalah config kustom yang mendefinisikan bagaimana sebuah objek spatial di-render:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">interface</span> TacticalDrawing {
+    id: <span class="hljs-built_in">string</span>;
+    <span class="hljs-keyword">type</span>: DrawingType;  <span class="hljs-comment">// 'freehand' | 'line' | 'route' | 'area' | 'symbol' | 'text' | 'measure' | 'model3d'</span>
+    
+    <span class="hljs-comment">// Geometry — SEMUA coordinates menggunakan format [lng, lat]</span>
+    coordinates: [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>][];
+    geometry?: GeoJSON.Geometry;  <span class="hljs-comment">// Computed, digunakan oleh Mapbox</span>
+    
+    <span class="hljs-comment">// Styling</span>
+    color: <span class="hljs-built_in">string</span>;
+    strokeWidth: <span class="hljs-built_in">number</span>;
+    fillColor?: <span class="hljs-built_in">string</span>;         <span class="hljs-comment">// Khusus untuk 'area'</span>
+    fillOpacity?: <span class="hljs-built_in">number</span>;       <span class="hljs-comment">// 0-1</span>
+    dashPattern?: <span class="hljs-built_in">number</span>[];     <span class="hljs-comment">// Garis putus-putus</span>
+    
+    <span class="hljs-comment">// Simbol militer (MIL-STD-2525 / NATO APP-6E)</span>
+    symbolSIDC?: <span class="hljs-built_in">string</span>;        <span class="hljs-comment">// Kode SIDC standar NATO</span>
+    symbolAffiliation?: <span class="hljs-string">'friendly'</span> | <span class="hljs-string">'hostile'</span> | <span class="hljs-string">'neutral'</span> | <span class="hljs-string">'unknown'</span>;
+    
+    <span class="hljs-comment">// 3D Model</span>
+    modelUrl?: <span class="hljs-built_in">string</span>;          <span class="hljs-comment">// Path ke GLB model</span>
+    scale?: [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>];
+    rotation?: [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>];
+    altitude?: <span class="hljs-built_in">number</span>;
+    
+    <span class="hljs-comment">// Metadata</span>
+    label?: <span class="hljs-built_in">string</span>;
+    notes?: <span class="hljs-built_in">string</span>;
+    iconId?: <span class="hljs-built_in">string</span>;            <span class="hljs-comment">// Key untuk icon library</span>
+    createdBy: <span class="hljs-built_in">string</span>;          <span class="hljs-comment">// 'AI Mission Planner' | user</span>
+}
+</div></code></pre>
+<h4 id="bagaimana-ai-output-menjadi-tacticaldrawing">Bagaimana AI Output Menjadi TacticalDrawing</h4>
+<p>LLM Mission Planner menghasilkan <code>mapAnnotations</code> dalam format mentah:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Output LLM:</span>
+{
+  <span class="hljs-attr">"mapAnnotations"</span>: {
+    <span class="hljs-attr">"routes"</span>: [
+      { <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Primary Approach"</span>, <span class="hljs-attr">"coordinates"</span>: [[lng,lat],...], <span class="hljs-attr">"color"</span>: <span class="hljs-string">"#00ffff"</span> }
+    ],
+    <span class="hljs-attr">"symbols"</span>: [
+      { <span class="hljs-attr">"name"</span>: <span class="hljs-string">"FOB Alpha"</span>, <span class="hljs-attr">"coordinates"</span>: [lng,lat], <span class="hljs-attr">"iconId"</span>: <span class="hljs-string">"building"</span>, <span class="hljs-attr">"color"</span>: <span class="hljs-string">"#4ade80"</span> }
+    ],
+    <span class="hljs-attr">"areas"</span>: [
+      { <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Kill Zone"</span>, <span class="hljs-attr">"coordinates"</span>: [[lng,lat],[lng,lat],...], <span class="hljs-attr">"color"</span>: <span class="hljs-string">"#f87171"</span>, <span class="hljs-attr">"fillOpacity"</span>: <span class="hljs-number">0.15</span> }
+    ]
+  }
+}
+</div></code></pre>
+<p><strong>Transform</strong> di <code>mission-planner-agent.js → transformToTacticalPlan()</code>:</p>
+<pre class="hljs"><code><div>File: server/services/mission-planner-agent.js (lines 510-593)
+</div></code></pre>
+<table>
+<thead>
+<tr>
+<th>LLM mapAnnotations</th>
+<th>→ TacticalDrawing</th>
+<th>Map Render</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>routes[].coordinates: [[lng,lat]...]</code></td>
+<td><code>type: 'route'</code>, <code>coordinates: [[lng,lat]...]</code></td>
+<td><strong>Dashed polyline</strong> di peta (animated dash flow)</td>
+</tr>
+<tr>
+<td><code>symbols[].coordinates: [lng,lat]</code></td>
+<td><code>type: 'symbol'</code>, <code>coordinates: [[lng,lat]]</code></td>
+<td><strong>NATO APP-6E marker</strong> dengan pulsing circle</td>
+</tr>
+<tr>
+<td><code>areas[].coordinates: [[lng,lat]...]</code></td>
+<td><code>type: 'area'</code>, <code>coordinates: [[lng,lat]...]</code></td>
+<td><strong>Filled polygon</strong> dengan transparency</td>
+</tr>
+<tr>
+<td><code>keyLocations[].{lat,lng}</code> (fallback)</td>
+<td><code>type: 'symbol'</code>, <code>coordinates: [[lng,lat]]</code></td>
+<td><strong>Marker</strong> dengan icon berdasarkan type</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Icon mapping</strong> (untuk keyLocations fallback):</p>
+<table>
+<thead>
+<tr>
+<th>Location Type</th>
+<th>iconId</th>
+<th>NATO SIDC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>medical</code></td>
+<td><code>medical</code></td>
+<td><code>SFGPXMH----</code></td>
+</tr>
+<tr>
+<td><code>threat</code></td>
+<td><code>warning</code></td>
+<td><code>SUGPU------</code></td>
+</tr>
+<tr>
+<td><code>landing</code></td>
+<td><code>transport</code></td>
+<td><code>SFAPMFT----</code></td>
+</tr>
+<tr>
+<td><code>base</code></td>
+<td><code>building</code></td>
+<td><code>SFGPUH-----</code></td>
+</tr>
+<tr>
+<td><em>default</em></td>
+<td><code>default</code></td>
+<td><code>SFGPU------</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="rendering-pipeline-drawing-%E2%86%92-mapbox-gl-layer">Rendering Pipeline: Drawing → Mapbox GL Layer</h3>
+<pre class="hljs"><code><div>File: src/components/map/drawing/DrawingLayers.tsx
+</div></code></pre>
+<p><code>DrawingLayers</code> mengkonversi <code>TacticalDrawing[]</code> ke native Mapbox GL layers:</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD
+    A["activePlan.drawings\n(TacticalDrawing[])"] --> B["drawingsGeoJSON\n(useMemo)"]
+    B --> C["GeoJSON FeatureCollection"]
+    
+    C --> D1["drawings-fill\n(fill layer)"]
+    C --> D2["drawings-route-main\n(line layer + dash)"]
+    C --> D3["drawings-line-standard\n(line layer)"]
+    C --> D4["drawings-symbol-pulse\n(circle layer)"]
+    
+    A --> E["NATO Symbol Markers\n(react-map-gl Marker)"]
+    A --> F["waypoints-source\n(route waypoints + distance labels)"]
+    A --> G["tactical-labels-source\n(text labels)"]
+</div></code></pre>
+<p><strong>Drawing type → GeoJSON geometry mapping:</strong></p>
+<table>
+<thead>
+<tr>
+<th>DrawingType</th>
+<th>GeoJSON Geometry</th>
+<th>Mapbox Layer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>route</code></td>
+<td><code>LineString</code></td>
+<td><code>line</code> (dashed, animated, 4-12px width based on zoom)</td>
+</tr>
+<tr>
+<td><code>line</code>, <code>freehand</code></td>
+<td><code>LineString</code></td>
+<td><code>line</code> (solid, 2-6px width)</td>
+</tr>
+<tr>
+<td><code>area</code></td>
+<td><code>Polygon</code> (auto-close ring)</td>
+<td><code>fill</code> (semi-transparent)</td>
+</tr>
+<tr>
+<td><code>symbol</code></td>
+<td><code>Point</code></td>
+<td><code>circle</code> (pulsing) + <code>&lt;Marker&gt;</code> (NATO SVG)</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><code>Point</code></td>
+<td><code>symbol</code> (text label)</td>
+</tr>
+<tr>
+<td><code>measure</code></td>
+<td><code>LineString</code></td>
+<td><code>line</code> + distance labels</td>
+</tr>
+<tr>
+<td><code>model3d</code></td>
+<td>Skipped (rendered by Threebox)</td>
+<td>3D GLB model via Three.js</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Zoom-responsive expressions</strong> (Mapbox data expressions):</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Contoh: route width scales with zoom level</span>
+<span class="hljs-keyword">const</span> ROUTE_WIDTH = [<span class="hljs-string">'interpolate'</span>, [<span class="hljs-string">'linear'</span>], [<span class="hljs-string">'zoom'</span>], 
+    <span class="hljs-number">6</span>, <span class="hljs-number">4</span>,     <span class="hljs-comment">// zoom 6 → 4px</span>
+    <span class="hljs-number">10</span>, <span class="hljs-number">6</span>,    <span class="hljs-comment">// zoom 10 → 6px</span>
+    <span class="hljs-number">14</span>, <span class="hljs-number">8</span>,    <span class="hljs-comment">// zoom 14 → 8px</span>
+    <span class="hljs-number">18</span>, <span class="hljs-number">12</span>    <span class="hljs-comment">// zoom 18 → 12px</span>
+];
+</div></code></pre>
+<p><strong>NATO APP-6E Symbol rendering:</strong></p>
+<pre class="hljs"><code><div>File: src/utils/natoSymbols.ts → getNatoSVG()
+</div></code></pre>
+<p>Setiap symbol drawing di-render sebagai SVG marker NATO standar berdasarkan:</p>
+<ul>
+<li><code>symbolSIDC</code> — kode identifikasi 15-karakter (e.g., <code>SFGPU------</code>)</li>
+<li><code>symbolAffiliation</code> — <code>friendly</code> (biru), <code>hostile</code> (merah), <code>neutral</code> (hijau), <code>unknown</code> (kuning)</li>
+</ul>
+<h3 id="type-2-simulationconfig--simulation-playback-data">Type 2: <code>SimulationConfig</code> — Simulation Playback Data</h3>
+<pre class="hljs"><code><div>File: src/types/simulation-types.ts
+</div></code></pre>
+<p><strong><code>SimulationConfig</code></strong> mendefinisikan seluruh data yang diperlukan untuk animated playback di atas Mapbox:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">interface</span> SimulationConfig {
+    id: <span class="hljs-built_in">string</span>;
+    missionId: <span class="hljs-built_in">string</span>;         <span class="hljs-comment">// Link ke TacticalPlan</span>
+    name: <span class="hljs-built_in">string</span>;
+    theater: <span class="hljs-built_in">string</span>;           <span class="hljs-comment">// Theater of operations</span>
+    duration: <span class="hljs-built_in">number</span>;          <span class="hljs-comment">// Total seconds (120-300)</span>
+    
+    <span class="hljs-comment">// Camera setup — digunakan untuk flyTo saat simulation dimulai</span>
+    aoi: {
+        center: [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>]; <span class="hljs-comment">// [lng, lat]</span>
+        zoom: <span class="hljs-built_in">number</span>;             <span class="hljs-comment">// 8-14</span>
+        pitch: <span class="hljs-built_in">number</span>;            <span class="hljs-comment">// biasanya 55°</span>
+        bearing: <span class="hljs-built_in">number</span>;          <span class="hljs-comment">// 0-360°</span>
+    };
+    
+    units: SimUnit[];
+    groundTargets: SimGroundTarget[];
+    events: SimEvent[];
+    phases: SimPhase[];
+}
+</div></code></pre>
+<h4 id="simunit--unit-bergerak-di-peta">SimUnit — Unit Bergerak di Peta</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">interface</span> SimUnit {
+    id: <span class="hljs-built_in">string</span>;
+    callsign: <span class="hljs-built_in">string</span>;          <span class="hljs-comment">// e.g. "EAGLE-1"</span>
+    <span class="hljs-keyword">type</span>: <span class="hljs-string">'ally'</span> | <span class="hljs-string">'enemy'</span>;    <span class="hljs-comment">// Menentukan warna (blue vs red)</span>
+    unitType: UnitRole;        <span class="hljs-comment">// Menentukan shape icon</span>
+    color: <span class="hljs-built_in">string</span>;             <span class="hljs-comment">// Hex, e.g. '#00bfff'</span>
+    shadowColor: <span class="hljs-built_in">string</span>;       <span class="hljs-comment">// Glow effect</span>
+    
+    <span class="hljs-comment">// GEO-COORDINATE WAYPOINT PATH — ini yang di-animate</span>
+    path: SimWaypoint[];
+    
+    destroyTime?: <span class="hljs-built_in">number</span>;      <span class="hljs-comment">// Detik kapan unit dihancurkan (null = survive)</span>
+}
+
+<span class="hljs-keyword">interface</span> SimWaypoint {
+    t: <span class="hljs-built_in">number</span>;     <span class="hljs-comment">// Detik dari start</span>
+    lng: <span class="hljs-built_in">number</span>;   <span class="hljs-comment">// Longitude (geo-coordinate)</span>
+    lat: <span class="hljs-built_in">number</span>;   <span class="hljs-comment">// Latitude (geo-coordinate)</span>
+    alt?: <span class="hljs-built_in">number</span>;  <span class="hljs-comment">// Altitude meters (untuk flight level display)</span>
+    heading?: <span class="hljs-built_in">number</span>; <span class="hljs-comment">// Degrees</span>
+    speed?: <span class="hljs-built_in">number</span>;   <span class="hljs-comment">// km/h</span>
+    action?: <span class="hljs-string">'cruise'</span> | <span class="hljs-string">'loiter'</span> | <span class="hljs-string">'strike'</span> | <span class="hljs-string">'evade'</span> | <span class="hljs-string">'land'</span> | <span class="hljs-string">'hover'</span>;
+}
+</div></code></pre>
+<p><strong>Kunci</strong>: <code>SimWaypoint.path[]</code> menggunakan <strong>real geo-coordinates</strong> (lng/lat), BUKAN pixel coordinates. Ini yang membuat simulasi bisa di-render langsung di atas Mapbox GL map.</p>
+<h4 id="geo-interpolation-engine">Geo Interpolation Engine</h4>
+<pre class="hljs"><code><div>File: src/types/simulation-types.ts → interpolateGeo()
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">interpolateGeo</span>(<span class="hljs-params">path: SimWaypoint[], t: <span class="hljs-built_in">number</span></span>): </span>{ lng, lat, alt, heading } | <span class="hljs-literal">null</span>
+</div></code></pre>
+<p>Pada setiap animation frame, posisi unit dihitung dengan:</p>
+<ol>
+<li>Cari 2 waypoint yang mengapit waktu <code>t</code> saat ini</li>
+<li>Hitung fraction <code>f = (t - a.t) / (b.t - a.t)</code></li>
+<li>Terapkan <strong>cubic easing</strong> untuk smooth motion: <code>ef = f &lt; 0.5 ? 2f² : -1 + (4-2f)f</code></li>
+<li>Interpolasi: <code>lng = a.lng + (b.lng - a.lng) × ef</code> (sama untuk lat, alt)</li>
+<li>Auto-calculate heading dari <code>atan2(dLng, dLat)</code> jika tidak disediakan</li>
+</ol>
+<h3 id="simulation-%E2%86%92-mapbox-gl-layers">Simulation → Mapbox GL Layers</h3>
+<pre class="hljs"><code><div>File: src/components/simulation/MapSimulation.tsx
+</div></code></pre>
+<p>MapSimulation <strong>tidak menggunakan Canvas</strong>. Ia memanfaatkan native Mapbox GL sources dan layers:</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph LR
+    subgraph "Every Animation Frame"
+        A["interpolateGeo()\nfor each unit"] --> B["buildUnitsGeoJSON()"]
+        B --> C["GeoJSON FeatureCollection"]
+        C --> D["source.setData()\n(sim-units-src)"]
+    end
+    
+    subgraph "Mapbox GL Layers (setup once)"
+        E["sim-icons-lyr\n(symbol layer)"]
+        F["sim-labels-lyr\n(symbol layer)"]
+        G["sim-trail-{unitId}\n(line layer per unit)"]
+    end
+    
+    D --> E
+    D --> F
+</div></code></pre>
+<p><strong>SVG Sprites</strong> (di-load saat setup):</p>
+<table>
+<thead>
+<tr>
+<th>Sprite ID</th>
+<th>SVG Shape</th>
+<th>Digunakan Untuk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sim-chevron-ally</code></td>
+<td>Chevron biru ▲</td>
+<td>Air units (fighter, helicopter, uav, transport)</td>
+</tr>
+<tr>
+<td><code>sim-chevron-enemy</code></td>
+<td>Chevron merah ▲</td>
+<td>Enemy air units</td>
+</tr>
+<tr>
+<td><code>sim-square-ally</code></td>
+<td>Square biru ■</td>
+<td>Ground/naval units</td>
+</tr>
+<tr>
+<td><code>sim-square-enemy</code></td>
+<td>Square merah ■</td>
+<td>Enemy ground units</td>
+</tr>
+<tr>
+<td><code>sim-target</code></td>
+<td>Target crosshair ⊕</td>
+<td>Ground targets (SAM, radar, base)</td>
+</tr>
+<tr>
+<td><code>sim-target-destroyed</code></td>
+<td>X mark ✕</td>
+<td>Destroyed targets</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Unit rendering logic:</strong></p>
+<pre class="hljs"><code><div>unitType ∈ {fighter, helicopter, uav, transport} → chevron icon
+unitType ∈ {ground, naval} → square icon
+type === 'enemy' → red variant
+type !== 'enemy' → blue variant
+</div></code></pre>
+<p><strong>Trail rendering:</strong> Setiap unit memiliki dedicated <code>LineString</code> source yang accumulates visited waypoints. Trail di-update setiap 5 frame untuk performance, dan dibatasi 100 coordinates terakhir.</p>
+<h3 id="zustand-store--mengelola-state-di-map">Zustand Store — Mengelola State Di-Map</h3>
+<pre class="hljs"><code><div>File: src/stores/tacticalStore.ts
+</div></code></pre>
+<p><code>useTacticalStore</code> (Zustand + localStorage persistence) menjadi bridge antara AI-generated data dan map rendering:</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph LR
+    A["AI Agent Output\n(TacticalPlan)"] --> B["setPlans()\n→ plans[]"]
+    B --> C["loadPlan(id)\n→ activePlan"]
+    C --> D["activePlan.drawings\n→ DrawingLayers renders on map"]
+    C --> E["activePlan.defaultViewport\n→ map.flyTo()"]
+    C --> F["activePlan.threatAssessment\n→ RiskScorePanel"]
+    C --> G["activePlan.recommendedAssets\n→ RecommendedAssetsPanel"]
+</div></code></pre>
+<p><strong>State flow saat plan di-load:</strong></p>
+<ol>
+<li><code>setPlans([...existing, newPlan])</code> — tambah ke list</li>
+<li><code>loadPlan(newPlan.id)</code> — set as <code>activePlan</code></li>
+<li><code>DrawingLayers</code> component auto-reacts (subscribed ke <code>activePlan.drawings</code>)</li>
+<li>Map viewport flies to <code>activePlan.defaultViewport</code> atau bounding box dari semua drawing coordinates</li>
+</ol>
+<p><strong>Drawing management:</strong> Store juga mendukung manual drawing editing (user bisa menambah/menghapus drawings di atas AI-generated ones), dengan undo/redo history tracking.</p>
+<hr>
+<h2 id="error-handling--fallback-chain">Error Handling &amp; Fallback Chain</h2>
+<p>Setiap stage memiliki error handling berlapis:</p>
+<h3 id="coa-generation">COA Generation</h3>
+<pre class="hljs"><code><div>AI Generation
+    │
+    ├── ✅ Success → Return AI options + analysis
+    │
+    ├── ⚠️ Mapbox partially fails
+    │       → Continue with available data (some fields null)
+    │       → LLM still generates (less terrain-informed)
+    │
+    ├── ❌ LLM API fails (after 3 retries with exponential backoff)
+    │       → Backend returns SSE event: error
+    │       → Frontend catches → falls back to mock COA data
+    │
+    └── ❌ Backend unreachable
+            → Frontend catches fetch error
+            → Falls back to generateCOAOptions() mock
+</div></code></pre>
+<pre class="hljs"><code><div>File: src/services/coaService.ts → catch block → generateCOAOptions() from mock-coa
+</div></code></pre>
+<h3 id="mission-planning">Mission Planning</h3>
+<pre class="hljs"><code><div>Mission Plan Generation
+    │
+    ├── ✅ Success → TacticalPlan + drawings on map
+    │
+    ├── ⚠️ Some tools fail (e.g. AIS unavailable)
+    │       → Agent continues with available data
+    │       → Partial plan still generated
+    │
+    ├── ❌ LLM fails (after 10 retries)
+    │       → SSE event: error with message
+    │       → Frontend shows error overlay
+    │       → User can retry or create plan manually
+    │
+    └── ❌ JSON parse fails
+            → Retry with cleaned content
+            → Last resort: return partial plan
+</div></code></pre>
+<h3 id="simulation">Simulation</h3>
+<pre class="hljs"><code><div>Simulation Generation
+    │
+    ├── ✅ Success → SimulationConfig → MapSimulation playback
+    │
+    ├── ❌ LLM fails (after 3 retries)
+    │       → SSE event: error
+    │       → Frontend shows error message
+    │
+    └── ✅ Existing simulation found
+            → GET /api/simulation/{missionId} returns saved config
+            → Skip generation, directly play
+</div></code></pre>
+<h3 id="sse-connection-resilience">SSE Connection Resilience</h3>
+<pre class="hljs"><code><div>File: server/utils/sse.js → setupSSE()
+</div></code></pre>
+<ul>
+<li>Keep-alive ping setiap 15 detik (mencegah proxy timeout)</li>
+<li><code>Content-Type: text/event-stream</code> + <code>Cache-Control: no-cache</code></li>
+<li>Connection cleanup on client disconnect (<code>req.on('close')</code>)</li>
+<li>Multi-session safe — no shared mutable state between concurrent requests</li>
+</ul>
+<hr>
+<h2 id="timing-breakdown">Timing Breakdown</h2>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Step</th>
+<th>Durasi Estimasi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>COA</strong></td>
+<td>Mapbox terrain queries (parallel)</td>
+<td>~1-3 detik</td>
+</tr>
+<tr>
+<td></td>
+<td>Route computation</td>
+<td>~0.5-1 detik</td>
+</tr>
+<tr>
+<td></td>
+<td>Weather + water detection</td>
+<td>~0.5-1 detik</td>
+</tr>
+<tr>
+<td></td>
+<td>Prompt assembly</td>
+<td>&lt; 50ms</td>
+</tr>
+<tr>
+<td></td>
+<td>LLM tool-calling loop (1-5 rounds)</td>
+<td>~5-15 detik</td>
+</tr>
+<tr>
+<td></td>
+<td>Response parsing + save</td>
+<td>&lt; 100ms</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total COA</strong></td>
+<td><strong>~8-20 detik</strong></td>
+</tr>
+<tr>
+<td><strong>Mission</strong></td>
+<td>buildPromptFromCOA</td>
+<td>&lt; 10ms</td>
+</tr>
+<tr>
+<td></td>
+<td>LLM agentic loop (1-20 rounds)</td>
+<td>~15-60 detik</td>
+</tr>
+<tr>
+<td></td>
+<td>transformToTacticalPlan</td>
+<td>&lt; 50ms</td>
+</tr>
+<tr>
+<td></td>
+<td>Save to DB</td>
+<td>&lt; 100ms</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total Mission</strong></td>
+<td><strong>~15-60 detik</strong></td>
+</tr>
+<tr>
+<td><strong>Simulation</strong></td>
+<td>buildPlanSummary</td>
+<td>&lt; 50ms</td>
+</tr>
+<tr>
+<td></td>
+<td>LLM single-shot call</td>
+<td>~5-15 detik</td>
+</tr>
+<tr>
+<td></td>
+<td>enrichSimConfig</td>
+<td>&lt; 50ms</td>
+</tr>
+<tr>
+<td></td>
+<td>Save to DB</td>
+<td>&lt; 100ms</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total Simulation</strong></td>
+<td><strong>~5-15 detik</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total Pipeline (end-to-end)</strong></td>
+<td><strong>~30-95 detik</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="sop--docling-integration">SOP &amp; Docling Integration</h2>
+<p>Operator dapat menyertakan <strong>Standard Operating Procedure (SOP)</strong> organisasi agar AI menghasilkan COA/plan yang sesuai prosedur resmi.</p>
+<h3 id="flow-sop">Flow SOP</h3>
+<pre><code class="language-mermaid"><div class="mermaid">graph LR
+    A["Operator upload\nPDF/DOC/TXT"] --> B["POST /api/docling/extract"]
+    B --> C["Docling API\n(Document Understanding)"]
+    C --> D["Extracted text\n(clean markdown)"]
+    D --> E["sopContent\nfield in request"]
+    E --> F["Appended to\nLLM system prompt"]
+</div></code></pre>
+<h3 id="dua-cara-input-sop">Dua Cara Input SOP</h3>
+<table>
+<thead>
+<tr>
+<th>Cara</th>
+<th>Component</th>
+<th>Proses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Paste manual</strong></td>
+<td>COAPanel text area</td>
+<td>Teks langsung dikirim sebagai <code>sopContent</code></td>
+</tr>
+<tr>
+<td><strong>Upload file</strong></td>
+<td>COAPanel file input</td>
+<td>File → <code>POST /api/docling/extract</code> → extracted text → <code>sopContent</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-continuity">Data Continuity</h3>
+<p>SOP content dan custom prompt <strong>dibawa antar stage</strong>:</p>
+<ol>
+<li>User input SOP di COA Panel</li>
+<li>COA Panel kirim ke backend → AI menghasilkan COA sesuai SOP</li>
+<li>Saat &quot;GO TO MISSION PLAN&quot;, <code>sopContent</code> dan <code>customPrompt</code> disertakan di <code>navigate()</code> state</li>
+<li>Mission Planner auto-passes ke backend → AI menghasilkan plan yang konsisten dengan SOP</li>
+</ol>
+<hr>
+<h2 id="penerapan-multi-sektor">Penerapan Multi-Sektor</h2>
+<p>Pipeline Intel → COA → Plan → Simulation <strong>bukan hanya untuk militer</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Sektor</th>
+<th>Intelligence Feed</th>
+<th>COA</th>
+<th>Mission Plan</th>
+<th>Simulation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pertahanan</strong></td>
+<td>Laporan intelijen, sensor, AIS</td>
+<td>Opsi patroli, interdiksi, pengawasan</td>
+<td>Deployment tim + ROE + rute</td>
+<td>Pergerakan pasukan di peta</td>
+</tr>
+<tr>
+<td><strong>Respons Bencana</strong></td>
+<td>Data gempa, level banjir, laporan warga</td>
+<td>Opsi evakuasi, distribusi bantuan</td>
+<td>Rute evakuasi, penempatan posko</td>
+<td>Visualisasi alur evakuasi</td>
+</tr>
+<tr>
+<td><strong>Penegakan Hukum</strong></td>
+<td>Laporan kriminal, deteksi CCTV</td>
+<td>Opsi penggerebekan, pengawasan</td>
+<td>Posisi tim, titik blokade</td>
+<td>Briefing visual operasi</td>
+</tr>
+<tr>
+<td><strong>Oil &amp; Gas</strong></td>
+<td>Sensor kebocoran, alarm keamanan</td>
+<td>Respons kebocoran, evakuasi</td>
+<td>Tim darurat, zona aman</td>
+<td>Latihan respons darurat</td>
+</tr>
+<tr>
+<td><strong>Logistik</strong></td>
+<td>Posisi armada, cuaca, traffic</td>
+<td>Rute alternatif, hub transit</td>
+<td>Rute optimal, schedule</td>
+<td>Pergerakan armada 24 jam</td>
+</tr>
+<tr>
+<td><strong>Konservasi</strong></td>
+<td>Hotspot kebakaran, deforestasi</td>
+<td>Strategi pemadaman, evakuasi satwa</td>
+<td>Tim pemadam, jalur akses</td>
+<td>Penyebaran api vs respons</td>
+</tr>
+</tbody>
+</table>
+<h3 id="perbandingan-waktu">Perbandingan Waktu</h3>
+<table>
+<thead>
+<tr>
+<th>Proses</th>
+<th>Tanpa Sentinel OS</th>
+<th>Dengan Sentinel OS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kompilasi informasi</td>
+<td>30-60 menit</td>
+<td>Langsung di dashboard</td>
+</tr>
+<tr>
+<td>Analisis + opsi tindakan</td>
+<td>2-4 jam</td>
+<td>1-2 menit (AI COA)</td>
+</tr>
+<tr>
+<td>Perencanaan detail</td>
+<td>4-8 jam</td>
+<td>2-3 menit (AI Mission)</td>
+</tr>
+<tr>
+<td>Briefing tim</td>
+<td>Lisan (risiko miskomunikasi)</td>
+<td>Simulasi 3D visual</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>6-13 jam</strong></td>
+<td><strong>15-30 menit</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="key-design-decisions">Key Design Decisions</h2>
+<ol>
+<li>
+<p><strong>SSE over WebSocket</strong> — Semua AI generation menggunakan Server-Sent Events (unidirectional) karena cukup untuk streaming reasoning steps. WebSocket tidak diperlukan karena tidak ada bidirectional communication selama generation.</p>
+</li>
+<li>
+<p><strong>Shared Tool System</strong> — <code>openai-tools.js</code> menyediakan tool definitions dan handlers yang digunakan bersama oleh COA agent dan Mission Planner agent. Nama file tetap &quot;openai-tools&quot; karena alasan historis, namun mendukung berbagai LLM provider. Ini menghindari duplikasi kode dan memastikan konsistensi.</p>
+</li>
+<li>
+<p><strong>Single-shot Simulation</strong> — Simulation agent tidak menggunakan tool-calling karena semua data (koordinat, unit, fases) sudah ada di mission plan. Ini membuat simulation generation lebih cepat (~5-10 detik vs ~30-60 detik untuk mission planning).</p>
+</li>
+<li>
+<p><strong>GeoJSON on Mapbox GL</strong> — Map simulation menggunakan native Mapbox GL layers (bukan Canvas overlay) untuk GPU-accelerated rendering. Ini memungkinkan smooth animation bahkan dengan banyak unit.</p>
+</li>
+<li>
+<p><strong>Data Continuity</strong> — SOP content dan custom prompt dibawa dari COA stage ke Mission Planning stage melalui React Router navigation state, ensuring the AI has consistent context across the pipeline.</p>
+</li>
+<li>
+<p><strong>Multi-Session Safety</strong> — Setiap agent invocation completely stateless (no shared mutable state). Multiple concurrent users dapat generate COA/plans/simulations secara bersamaan tanpa race conditions.</p>
+</li>
+<li>
+<p><strong>LLM Provider Abstraction</strong> — <code>llm-client.js</code> mendukung berbagai LLM provider sebagai backend. Model configurable via <code>LLM_MODEL</code> env var. Ini memungkinkan switching provider dan model tanpa code changes.</p>
+</li>
+<li>
+<p><strong>Mock Fallback</strong> — Frontend selalu memiliki fallback ke mock data jika backend unreachable. Ini memastikan demo bisa berjalan tanpa API key.</p>
+</li>
+</ol>
+
+</body>
+</html>
