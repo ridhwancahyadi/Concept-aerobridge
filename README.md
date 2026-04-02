@@ -45,7 +45,7 @@ flowchart TD
     end
 
     subgraph GATE5["TAHAP 5 — FINAL DISPLAY"]
-        PASS --> MULTI coa 3["🏆 Example \nTercepat · Teraman · Efisien"]
+        PASS --> TOP3["🏆 Example \nTercepat · Teraman · Efisien"]
         NOGO --> LIST["📋 Rejected List\nDengan alasan penolakan"]
         TOP3 --> SIM["🎬 Simulation\nPlayback per COA"]
     end
